@@ -76,7 +76,8 @@ t_flags		parse_width(char *str, t_flags flags)
 	i = 1;
 	while (str[i] != '.' && str[i] != 'l' && \
 		str[i] != 'h' && str[i] != 'j' && \
-		str[i] != 'z' && str[i] != '%' && str[i])
+		str[i] != 'z' && str[i] != '%' && \
+		str[i] && ft_strlenchr(SPECIFICATE, str[i]) == -1)
 	{
 		if (str[i] == ' ')
 			i++;

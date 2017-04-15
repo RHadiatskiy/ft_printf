@@ -29,8 +29,7 @@ int				ft_print(va_list elem, const char *format, t_flags flags)
 {
 	int			i;
 	int			ret;
-	char		*s;
-
+	
 	i = 0;
 	ret = 0;
 	while (format[i])
@@ -39,6 +38,7 @@ int				ft_print(va_list elem, const char *format, t_flags flags)
 		{
 			write(1, &format[i], 1);
 			i += 2;
+			ret += 1;
 		}
 		else if (format[i] == '%' && format[i + 1] != '%')
 		{

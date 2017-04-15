@@ -14,7 +14,7 @@
 
 void	print_flags(t_flags flags)
 {
-	printf("%-15s", "ZERO :");
+	printf("\n%-15s", "ZERO :");
 	printf("%15d\n", flags.zero);
 	printf("%-15s", "PLUS :");
 	printf("%15d\n", flags.plus);
@@ -26,9 +26,11 @@ void	print_flags(t_flags flags)
 	printf("%15d\n", flags.hash);
 	printf("%-15s", "WIDTH :");
 	printf("%15d\n", flags.width);
-	printf("%15d\n", flags.get_width);
 	printf("%-15s", "PRECISION :");
 	printf("%15d\n", flags.precision);
+	printf("%-15s", "GET WIDTH :");
+	printf("%15d\n", flags.get_width);
+	printf("%-15s", "GET PRECISION :");
 	printf("%15d\n", flags.get_precision);
 	printf("%-15s", "h :");
 	printf("%15d\n", flags.h);

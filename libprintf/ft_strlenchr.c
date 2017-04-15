@@ -19,9 +19,9 @@ int		ft_strlenchr(const char *s, int c)
 
 	s1 = (unsigned char *)s;
 	i = 0;
-	while (s1[i] != c && s1[i] != '\0')
+	while (s1[i] != c && s1[i])
 		i++;
 	if (s1[i] == (unsigned char)c)
 		return (i);
-	return (0);
+	return (-1);
 }

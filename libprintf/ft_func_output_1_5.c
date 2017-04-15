@@ -31,12 +31,8 @@ int		ft_s_low(va_list elem, t_flags flags)
 		while (l-- > 0)
 			write(1, &s[i++], 1);
 	while (width-- > 0)
-	{
-		if (flags.zero == 1 && flags.minus == 0)
-			write(1, "0", 1);
-		else
-			write(1, " ", 1);
-	}
+		(flags.zero == 1 && flags.minus == 0) ? write(1, "0", 1) : \
+		write(1, " ", 1);
 	if (flags.minus == 0)
 		while (l-- > 0)
 			write(1, &s[i++], 1);
@@ -46,10 +42,30 @@ int		ft_s_low(va_list elem, t_flags flags)
 int		ft_d_low(va_list elem, t_flags flags)
 {
 	int		d;
+	int		width;
+	int		prec;
 
+	prec = 0;
 	d = va_arg(elem, int);
-	ft_putnbr(d);
-	return (0);
+	width = 0;
+	if (flags.minus == 1)
+		ft_putnbr(d);
+	if (flags.width == 1)
+		width = flags.get_width - ft_nbrlen(d);
+	if (flags.precision == 1)
+	{
+		width = flags.get_precision - ft_nbrlen(d);
+		prec = flags.get_width - flags.get_precision;
+	}
+	while (prec-- > 0)
+		write(1, " ", 1);
+	while (width-- > 0)
+		flags.precision == 1 ? write(1, "0", 1) : write(1, " ", 1);
+	if (flags.minus == 0)
+		ft_putnbr(d);
+	return (flags.width == 1 ? (flags.get_width > ft_nbrlen(d) ? \
+		flags.get_width : ft_nbrlen(d)) : flags.precision == 1 ? \
+		((flags.get_precision - ft_nbrlen(d)) + ft_nbrlen(d)) : ft_nbrlen(d));
 }
 
 int		ft_percent(va_list elem, t_flags flags)
@@ -64,12 +80,8 @@ int		ft_percent(va_list elem, t_flags flags)
 	if (flags.minus == 1)
 		write(1, "%", 1);
 	while (width-- > 1)
-	{
-		if (flags.zero == 1 && flags.minus == 0)
-			write(1, "0", 1);
-		else
-			write(1, " ", 1);
-	}
+		(flags.zero == 1 && flags.minus == 0) ?	write(1, "0", 1) : \
+		write(1, " ", 1);
 	if (flags.minus != 1)
 		write(1, "%", 1);
 	return (flags.width == 1 && flags.get_width != 0 ? flags.get_width : 1);
