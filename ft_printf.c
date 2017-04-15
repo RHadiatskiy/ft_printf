@@ -11,20 +11,28 @@
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
-//#include "include/libprintf.h"
 
-t_flags		ft_print(char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		elem;
 	t_flags		flags;
+	int			ret;
+
+	ret = 0;
+	va_start(elem, format);
+	ret = ft_print(elem, format, flags);
+	va_end(elem);
+	return (ret);
+}
+
+int				ft_print(va_list elem, const char *format, t_flags flags)
+{
 	int			i;
-	int			n;
+	int			ret;
 	char		*s;
-	TYPE_F
 
 	i = 0;
-	n = 0;
-	va_start(elem, format);
+	ret = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '%')
@@ -34,24 +42,20 @@ t_flags		ft_print(char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] != '%')
 		{
+			flags = flags_reset(flags);
 			flags.str = memaloc_str(format, &i);
-//			printf("\nflags : %-15s", flags.str);
-			n = ft_strlenchr(SPECIFICATE, flags.str[ft_strlen(flags.str) - 1]);
 			flags = ft_parse(flags);
-//			printf("id : %-15d", n);
-			flags.specificate = flags.str[ft_strlen(flags.str) - 1];
-//			flags.precision = parse_precision(flags.str);
-//			flags.width = parse_width(flags.str);
-			write(1, "<FLAG>", 6);
+			ret += ft_output_func(elem, flags);
+	//		print_flags(flags);
+	//		write(1, "------------------------------\n", 31);
 		}
 		else
-			write(1, &format[i++], 1);
+			ret += write(1, &format[i++], 1);
 	}
-	va_end(elem);
-	return (flags);
+	return (ret);
 }
 
-char		*ft_strjoin_f(char *s1, char *s2)
+char			*ft_strjoin_f(char *s1, char *s2)
 {
 	char	*s_join;
 	int		i;
@@ -75,7 +79,7 @@ char		*ft_strjoin_f(char *s1, char *s2)
 	return (s_join);
 }
 
-char		*ft_strchrdup(char *str, char chr)
+char			*ft_strchrdup(const char *str, char chr)
 {
 	int		i;
 	int		j;
@@ -96,52 +100,7 @@ char		*ft_strchrdup(char *str, char chr)
 	return (dup);
 }
 
-t_flags		flags_reset(t_flags flags)
-{
-	flags.zero = 0;
-	flags.plus = 0;
-	flags.minus = 0;
-	flags.space = 0;
-	flags.hash = 0;
-//	flags.point = 0;
-	flags.width = 0;
-	flags.precision = 0;
-//	flags.lenght = 0;
-	flags.specificate = 0;
-	flags.str = NULL;
-	flags.args = NULL;
-	return (flags);
-}
-
-void	print_flags(t_flags flags)
-{
-	printf("%-15s", "ZERO :");
-	printf("%15d\n", flags.zero);
-	printf("%-15s", "PLUS :");
-	printf("%15d\n", flags.plus);
-	printf("%-15s", "MINUS :");
-	printf("%15d\n", flags.minus);
-	printf("%-15s", "SPACE :");
-	printf("%15d\n", flags.space);
-	printf("%-15s", "HASH :");
-	printf("%15d\n", flags.hash);
-//	printf("%-15s", "POINT :");
-//	printf("%15d\n", flags.point);
-	printf("%-15s", "WIDTH :");
-	printf("%15d\n", flags.width);
-	printf("%-15s", "PRECISION :");
-	printf("%15d\n", flags.precision);
-//	printf("%-15s", "LENGHT :");
-//	printf("%15d\n", flags.lenght);
-	printf("%-15s", "SPECIFICATE :");
-	printf("%15c\n", flags.specificate);
-	printf("%-15s", "STRING :");
-	printf("%15s\n", flags.str);
-	printf("%-15s", "ARGUMENT :");
-	printf("%15s\n", flags.args);
-}
-
-char		*memaloc_str(char *str, int *i)
+char			*memaloc_str(const char *str, int *i)
 {
 	int			l;
 	char		*s;

@@ -14,39 +14,13 @@
 # define FT_PRINTF_H
 
 # define SPECIFICATE 	"sSpdDioOuUxXcC%"
-# define base_base 			base[17] = "0123456789abcdef";
-
-# define CHAR_1 		char
-# define CHAR_2 		char *
-# define VOID_1 		void
-# define VOID_2 		void *
-# define INT 			int
-
-# define TYPE_F char	*type_f[16] =	\
-	{									\
-		"char *",						\
-		"char *",						\
-		"void *",						\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"int",							\
-		"char",							\
-		"char",							\
-		"char"							\
-	};
+# define base_base 		base[17] = "0123456789abcdef";
 
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# include "libprintf.h"
 
 typedef struct		s_flags
 {
@@ -55,9 +29,17 @@ typedef struct		s_flags
 	unsigned int		minus : 1;
 	unsigned int		space : 1;
 	unsigned int		hash : 1;
-//	unsigned int		point : 1;
-	unsigned int		width;
-	unsigned int		precision;
+	unsigned int		width : 1;
+	unsigned int		precision : 1;
+	unsigned int		get_width;
+	unsigned int		get_precision;
+	unsigned int		h : 1;
+	unsigned int		hh : 1;
+	unsigned int		l : 1;
+	unsigned int		ll : 1;
+	unsigned int		j : 1;
+	unsigned int		z : 1;
+
 /*	enum {
 		none,
 		hh,
@@ -72,11 +54,12 @@ typedef struct		s_flags
 	char				*args;
 }					t_flags;
 
-t_flags				ft_print(char *format, ...);
+int					ft_printf(const char *format, ...);
+
+int					ft_print(va_list elem, const char *format, t_flags flags);
 char				*ft_strjoin_f(char *s1, char *s2);
 t_flags				flags_reset(t_flags flags);
 void				print_flags(t_flags flags);
-
 void				ft_putchar(char c);
 size_t				ft_strlen(const char *str);
 void				ft_putnbr(int nb);
@@ -87,13 +70,35 @@ int					ft_atoi_base(const char *str, int str_base);
 char				*ft_itoa(long int nbr);
 int					ft_putstrf(char *str);
 char				*ft_strdup(const char *str);
-char				*ft_strchrdup(char *str, char chr);
-char				*memaloc_str(char *str, int *i);
+char				*ft_strchrdup(const char *str, char chr);
+char				*memaloc_str(const char *str, int *i);
 int					ft_strlenchr(const char *s, int c);
 t_flags				ft_parse(t_flags flags);
 t_flags				parse_flags(char *str, t_flags flags);
-int					parse_precision(char *str);
-int					parse_width(char *str);
+t_flags				parse_precision(char *str, t_flags flags);
+t_flags				parse_width(char *str, t_flags flags);
+t_flags				parse_length(char *str, t_flags flags);
 int					ft_isdigit(int n);
+int					ft_printing(va_list elem, t_flags flags);
+
+int					(*func[15])(va_list elem, t_flags flags);
+
+int					ft_output_func(va_list elem, t_flags flags);
+
+int					ft_s_low(va_list elem, t_flags flags);
+int					ft_s_high(va_list elem, t_flags flags);
+int					ft_p(va_list elem, t_flags flags);
+int					ft_d_low(va_list elem, t_flags flags);
+int					ft_d_high(va_list elem, t_flags flags);
+int					ft_i(va_list elem, t_flags flags);
+int					ft_o_low(va_list elem, t_flags flags);
+int					ft_o_high(va_list elem, t_flags flags);
+int					ft_u_low(va_list elem, t_flags flags);
+int					ft_u_high(va_list elem, t_flags flags);
+int					ft_x_low(va_list elem, t_flags flags);
+int					ft_x_high(va_list elem, t_flags flags);
+int					ft_c_low(va_list elem, t_flags flags);
+int					ft_c_high(va_list elem, t_flags flags);
+int					ft_percent(va_list elem, t_flags flags);
 
 #endif

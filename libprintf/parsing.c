@@ -11,11 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-//#include "../include/libprintf.h"
-
-//t_flags		parse_flags(char *str, t_flags flags);
-//int		parse_precision(char *str);
-//int		parse_width(char *str);
 
 t_flags		ft_parse(t_flags flags)
 {
@@ -23,9 +18,10 @@ t_flags		ft_parse(t_flags flags)
 
 	i = 1;
 	flags = parse_flags(flags.str, flags);
-	flags.width = parse_width(flags.str);
-	flags.precision = parse_precision(flags.str);
-//	flags.length = parse_length(flags.str);
+	flags = parse_width(flags.str, flags);
+	flags = parse_precision(flags.str, flags);
+	flags = parse_length(flags.str, flags);
+	flags.specificate = flags.str[ft_strlen(flags.str) - 1];
 	return (flags);
 }
 
@@ -34,7 +30,7 @@ t_flags		parse_flags(char *str, t_flags flags)
 	int		i;
 
 	i = 1;
-	while (str[i])
+	while (str[i] && (ft_atoi(&str[i - 1]) == 0))
 	{
 		if (str[i] == '0' || str[i] == ' ' || \
 			str[i] == '+' || str[i] == '-' || \
@@ -56,41 +52,72 @@ t_flags		parse_flags(char *str, t_flags flags)
 	return (flags);
 }
 
-int		parse_precision(char *str)
+t_flags		parse_precision(char *str, t_flags flags)
 {
 	int		i;
-	int		nb;
-
+	
 	i = 1;
-	nb = 0;
 	while (str[i])
 	{
 		if (str[i] == '.')
-			nb = ft_atoi(&str[++i]);
+		{
+			flags.precision = 1;		
+			flags.get_precision = ft_atoi(&str[++i]);
+		}
 		i++;
 	}
-	return (nb);
+	return (flags);
 }
 
-int		parse_width(char *str)
+t_flags		parse_width(char *str, t_flags flags)
 {
-	int		nb;
 	int		i;
 
-	i = 0;
-	nb = 0;
-	while ((ft_isdigit(str[i++])) != 1 && str[i] != '.')
-		;
-	return (ft_atoi(&str[i - 1]));
+	i = 1;
+	while (str[i] != '.' && str[i] != 'l' && \
+		str[i] != 'h' && str[i] != 'j' && \
+		str[i] != 'z' && str[i] != '%' && str[i])
+	{
+		if (str[i] == ' ')
+			i++;
+		else if (ft_isdigit(str[i]) == 1)
+		{
+			flags.get_width = flags.get_width * 10 + (str[i++] - '0');
+			flags.width = 1;
+		}
+		else if (ft_isdigit(str[i++]) != 1 && str[i] != ' ')
+		{
+			flags.get_width = 0;
+			flags.width = 0;
+		}
+	}
+	return (flags);
 }
 
-int		main(void)
+t_flags		parse_length(char *str, t_flags flags)
 {
-	t_flags	flags;
-	flags.str = "%      #-+5.42lls\n";
-	flags = ft_parse(flags);
-	print_flags(flags);
-//	printf("precision = %d\n", parse_precision(str));
-//	printf("width = %d\n", parse_width(str));
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'h' || str[i] == 'l' || \
+			str[i] == 'j' || str[i] == 'z')
+		{
+			if (str[i] == 'h' && str[i + 1] == 'h')
+				flags.hh = 1;
+			else if (str[i] == 'h' && str[i + 1] != 'h' && str[i - 1] != 'h')
+				flags.h = 1;
+			else if (str[i] == 'l' && str[i + 1] != 'l' && str[i - 1] != 'l')
+				flags.l = 1;
+			else if (str[i] == 'l' && str[i + 1] == 'l')
+				flags.ll = 1;
+			else if (str[i] == 'j')
+				flags.j = 1;
+			else if (str[i] == 'z')
+				flags.z = 1;
+		}
+		i++;
+	}
+	return (flags);
 }

@@ -15,17 +15,13 @@
 
 int			main(void)
 {
-	//	ft_print("%s%d%u%lld%i%o", "");
 	t_flags		flags;
-	flags = flags_reset(flags);
-	printf("------------------------------\n");
-	flags = ft_print("ololo%s%%ss%5%%%%05.3dololo\n", "...", "...");
-	printf("ololo%s%%ss%5%%%%5.3dololo\n", "<FLAG>", 42);
-	printf("------------------------------\n");
-	print_flags(flags);
-	printf("------------------------------\n");
-	flags = ft_parse(flags);
-	print_flags(flags);
-
+//	printf("------------------------------\n");
+	ft_printf("ololo%s%%ss%-04.0%%%%5.2sololo\n", "...", "42");
+	printf("ololo%s%%ss%-04.0%%%%5.2sololo\n", "...", "42");
+//	ft_printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
+//	printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
+//	printf("ret ft = %d\n", ft_printf("azaza%s\n", "ololo"));
+//	printf("ret = %d\n", printf("azaza%s\n", "ololo"));
 	return (0);
 }

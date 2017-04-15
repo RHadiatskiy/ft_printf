@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_printing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/30 16:13:01 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/14 17:03:04 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/04/15 12:39:32 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/04/15 12:39:36 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		ft_atoi(const char *str)
+int		ft_printing(va_list elem, t_flags flags)
 {
-	size_t	i;
-	size_t	num;
+	int		i;
 
 	i = 0;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || \
-			str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] >= '0' && str[i] <= '9')
-	{
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			num = num * 10 + (str[i] - '0');
-			i++;
-		}
-	}
-	return (num);
+	return (0);
 }
