@@ -63,7 +63,7 @@ int		ft_percent(va_list elem, t_flags flags)
 		write(1, "%", 1);
 	while (flags.get_width-- > 1)
 	{
-		if (flags.zero == 1)
+		if (flags.zero == 1 && flags.minus == 0)
 			write(1, "0", 1);
 		else
 			write(1, " ", 1);
