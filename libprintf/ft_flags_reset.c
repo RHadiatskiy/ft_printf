@@ -23,6 +23,7 @@ t_flags		flags_reset(t_flags flags)
 	flags.precision = 0;
 	flags.get_width = 0;
 	flags.get_precision = 0;
+	flags.asterix = 0;
 	flags.h = 0;
 	flags.hh = 0;
 	flags.l = 0;

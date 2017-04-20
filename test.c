@@ -15,6 +15,6 @@
 int		main(void)
 {
 	t_flags	flags;
-	printf("%-10.5s", "ololoza");
+	printf("%#5.3d\n", 5);
 	return (0);
 }

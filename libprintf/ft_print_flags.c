@@ -32,6 +32,8 @@ void	print_flags(t_flags flags)
 	printf("%15d\n", flags.get_width);
 	printf("%-15s", "GET PRECISION :");
 	printf("%15d\n", flags.get_precision);
+	printf("%-15s", "ASTERIX:");
+	printf("%15d\n", flags.asterix);
 	printf("%-15s", "h :");
 	printf("%15d\n", flags.h);
 	printf("%-15s", "hh :");

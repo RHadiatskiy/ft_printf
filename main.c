@@ -15,13 +15,14 @@
 
 int			main(void)
 {
-	t_flags		flags;
-//	printf("------------------------------\n");
-	ft_printf("ololo%s%%ss%-04.0%%%%5.2sololo\n", "...", "42");
-	printf("ololo%s%%ss%-04.0%%%%5.2sololo\n", "...", "42");
+//  ft_printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
+//  printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
 //	ft_printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
 //	printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
-//	printf("ret ft = %d\n", ft_printf("azaza%s\n", "ololo"));
-//	printf("ret = %d\n", printf("azaza%s\n", "ololo"));
+//	printf("------------------------------\n");
+//	printf("ret ft = %d\n", ft_printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
+//	printf("ret = %d\n", printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
+	printf("ret = %d\n", printf("origin : \n%2.3s\n", "kokoko"));
+	printf("ret ft = %d\n", ft_printf("my_fun : \n%2.3s\n", "kokoko"));
 	return (0);
 }

@@ -12,20 +12,17 @@
 
 #include "../include/ft_printf.h"
 
-t_flags		ft_parse(t_flags flags)
+t_flags		ft_parse(va_list elem, t_flags flags)
 {
-	int		i;
-
-	i = 1;
-	flags = parse_flags(flags.str, flags);
-	flags = parse_width(flags.str, flags);
-	flags = parse_precision(flags.str, flags);
-	flags = parse_length(flags.str, flags);
+	flags = parse_flags(elem, flags.str, flags);
+	flags = parse_width(elem, flags.str, flags);
+	flags = parse_precision(elem, flags.str, flags);
+	flags = parse_length(elem, flags.str, flags);
 	flags.specificate = flags.str[ft_strlen(flags.str) - 1];
 	return (flags);
 }
 
-t_flags		parse_flags(char *str, t_flags flags)
+t_flags		parse_flags(va_list elem, char *str, t_flags flags)
 {
 	int		i;
 
@@ -52,7 +49,7 @@ t_flags		parse_flags(char *str, t_flags flags)
 	return (flags);
 }
 
-t_flags		parse_precision(char *str, t_flags flags)
+t_flags		parse_precision(va_list elem, char *str, t_flags flags)
 {
 	int		i;
 	
@@ -61,15 +58,18 @@ t_flags		parse_precision(char *str, t_flags flags)
 	{
 		if (str[i] == '.')
 		{
-			flags.precision = 1;		
-			flags.get_precision = ft_atoi(&str[++i]);
+			flags.precision = 1;
+			if (str[++i] == '*')
+				flags.get_precision = va_arg(elem, int);
+			else
+				flags.get_precision = ft_atoi(&str[i++]);
 		}
 		i++;
 	}
 	return (flags);
 }
 
-t_flags		parse_width(char *str, t_flags flags)
+t_flags		parse_width(va_list elem, char *str, t_flags flags)
 {
 	int		i;
 
@@ -81,21 +81,27 @@ t_flags		parse_width(char *str, t_flags flags)
 	{
 		if (str[i] == ' ')
 			i++;
-		else if (ft_isdigit(str[i]) == 1)
+		else if (ft_isdigit(str[i]) == 1 && flags.asterix != 1)
 		{
 			flags.get_width = flags.get_width * 10 + (str[i++] - '0');
 			flags.width = 1;
 		}
-		else if (ft_isdigit(str[i++]) != 1 && str[i] != ' ')
+		else if (ft_isdigit(str[i]) != 1 && str[i] != ' ' && str[i++] != '*')
 		{
 			flags.get_width = 0;
 			flags.width = 0;
+		}
+		else if (str[i++] == '*')
+		{
+			flags.get_width = va_arg(elem, int);
+			flags.asterix = 1;
+			flags.width = 1;
 		}
 	}
 	return (flags);
 }
 
-t_flags		parse_length(char *str, t_flags flags)
+t_flags		parse_length(va_list elem, char *str, t_flags flags)
 {
 	int	i;
 
