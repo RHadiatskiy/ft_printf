@@ -6,7 +6,7 @@
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 15:28:57 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/12 21:56:26 by rhadiats         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:43:05 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_flags		parse_flags(va_list elem, char *str, t_flags flags)
 	int		i;
 
 	i = 1;
+	elem = NULL;
 	while (str[i] && (ft_atoi(&str[i - 1]) == 0))
 	{
 		if (str[i] == '0' || str[i] == ' ' || \
@@ -106,6 +107,7 @@ t_flags		parse_length(va_list elem, char *str, t_flags flags)
 	int	i;
 
 	i = 0;
+	elem = NULL;
 	while (str[i])
 	{
 		if (str[i] == 'h' || str[i] == 'l' || \

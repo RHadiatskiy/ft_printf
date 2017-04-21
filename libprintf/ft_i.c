@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_percent.c                                       :+:      :+:    :+:   */
+/*   ft_i.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/20 14:34:37 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/21 19:40:12 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/04/21 15:37:00 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/04/21 15:37:02 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		ft_percent(va_list elem, t_flags flags)
+int			ft_i(va_list elem, t_flags flags)
 {
-	int		i;
 	int		width;
+	int		prec;
+	int		r;
+	int		minus;
 
-	i = 1;
-	elem = NULL;
+	minus = 0;
+	r = va_arg(elem, int);
+	if (r < 0)
+	{
+		r *= -1;
+		minus = 1;
+	}
+	flags.args = ft_itoa(r);
+	prec = flags.get_precision;
 	width = flags.get_width;
-	while (flags.str[i] == ' ' && flags.str[i])
-		i++;
-	if (flags.minus == 1)
-		write(1, "%", 1);
-	while (width-- > 1)
-		(flags.zero == 1 && flags.minus == 0) ? (write(1, "0", 1)) : \
-		(write(1, " ", 1));
-	if (flags.minus != 1)
-		write(1, "%", 1);
-	return (flags.width == 1 && flags.get_width != 0 ? flags.get_width : 1);
+	flags.args = spec_d_modify(width, prec, flags, minus);
+	return (ft_printing(flags.args));
 }

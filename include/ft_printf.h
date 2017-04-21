@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <inttypes.h>
+# include <stdint.h>
 
 typedef struct		s_flags
 {
@@ -57,7 +59,7 @@ typedef struct		s_flags
 
 int					ft_printf(const char *format, ...);
 
-int					ft_print(va_list elem, const char *format, t_flags flags);
+int					ft_print(va_list elem, const char *format);
 char				*ft_strjoin_f(char *s1, char *s2);
 t_flags				flags_reset(t_flags flags);
 void				print_flags(t_flags flags);
@@ -69,6 +71,7 @@ int					sqr(int nb, int sq);
 int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int str_base);
 char				*ft_itoa(long int nbr);
+char				*ft_itoa_base(intmax_t value, int base);
 int					ft_nbrlen(long int nbr);
 int					ft_putstrf(char *str);
 char				*ft_strdup(const char *str);
@@ -84,6 +87,7 @@ int					ft_isdigit(int n);
 int					ft_printing(char *s);
 char				*ft_fill_symb(char c, int n);
 char				*spec_d_modify(int width, int prec, t_flags flags, int minus);
+
 char				*ft_strjoin(char const *s1, char const *s2);
 
 int					(*func[15])(va_list elem, t_flags flags);

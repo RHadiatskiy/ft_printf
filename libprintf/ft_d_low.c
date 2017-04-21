@@ -6,7 +6,7 @@
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:57:57 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/20 14:35:25 by rhadiats         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:36:56 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ char		*spec_d_modify(int width, int prec, t_flags flags, int minus)
 	char	*s_space;
 	int		is_max;
 
-	is_max = prec > ft_strlen(flags.args) ? prec : ft_strlen(flags.args);
-	s_zero = ft_fill_symb('0', prec - ft_strlen(flags.args));
+	is_max = prec > (int)(ft_strlen(flags.args)) ? prec : (int)(ft_strlen(flags.args));
+	if (flags.zero == 1 && flags.precision == 0)
+		s_zero = ft_fill_symb('0', width - ft_strlen(flags.args));
+	else
+		s_zero = ft_fill_symb('0', prec - ft_strlen(flags.args)); 
 	s_space = (minus == 0 && flags.space == 0 && flags.plus == 0) ? \
 		(ft_fill_symb(' ', width - is_max)) : \
 		(ft_fill_symb(' ', (width - is_max - 1)));
@@ -68,7 +71,8 @@ char		*spec_d_modify(int width, int prec, t_flags flags, int minus)
 		res_d = ft_strjoin("-", res_d);
 	if (flags.space == 1 && minus == 0 && flags.plus == 0)
 		res_d = ft_strjoin(" ", res_d);
-	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
-	(res_d = ft_strjoin(s_space, res_d));
+	if (flags.precision == 1 || flags.zero == 0)	
+		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
+		(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
 }

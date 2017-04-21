@@ -14,7 +14,6 @@
 
 int		main(void)
 {
-	t_flags	flags;
-	printf("%#5.3d\n", 5);
+	printf("%05d\n", 42);
 	return (0);
 }

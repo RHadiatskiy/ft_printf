@@ -15,20 +15,20 @@
 int				ft_printf(const char *format, ...)
 {
 	va_list		elem;
-	t_flags		flags;
 	int			ret;
 
 	ret = 0;
 	va_start(elem, format);
-	ret = ft_print(elem, format, flags);
+	ret = ft_print(elem, format);
 	va_end(elem);
 	return (ret);
 }
 
-int				ft_print(va_list elem, const char *format, t_flags flags)
+int				ft_print(va_list elem, const char *format)
 {
 	int			i;
 	int			ret;
+	t_flags		flags;
 	
 	i = 0;
 	ret = 0;
