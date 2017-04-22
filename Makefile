@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/22 18:51:19 by rhadiats          #+#    #+#              #
+#    Updated: 2017/04/22 18:51:22 by rhadiats         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRC = src/ft_atoi.c src/ft_atoi_base.c \
 		src/ft_d_low.c src/ft_flags_reset.c \
 		src/ft_i.c src/ft_isdigit.c \
@@ -9,7 +21,10 @@ SRC = src/ft_atoi.c src/ft_atoi_base.c \
 		src/ft_s_low.c src/ft_strdup.c \
 		src/ft_strjoin.c src/ft_strlen.c \
 		src/ft_strlenchr.c src/ft_u_low.c \
-		src/parsing.c ft_printf.c
+		src/ft_c_low.c src/ft_x_low.c \
+		src/parsing.c src/ft_strcmp.c \
+		src/ft_x_high.c ft_printf.c
+
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)

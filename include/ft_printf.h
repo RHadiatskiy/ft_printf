@@ -66,6 +66,7 @@ void				print_flags(t_flags flags);
 void				ft_putchar(char c);
 size_t				ft_strlen(const char *str);
 void				ft_putnbr(int nb);
+int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_to_lowcase(const char *str);
 int					sqr(int nb, int sq);
 int					ft_atoi(const char *str);
@@ -85,9 +86,9 @@ t_flags				parse_width(va_list elem, char *str, t_flags flags);
 t_flags				parse_length(va_list elem, char *str, t_flags flags);
 int					ft_isdigit(int n);
 int					ft_printing(char *s);
-char				*ft_fill_symb(char c, int n);
+char				*fillsmb(char c, int n);
 char				*spec_d_modify(int width, int prec, t_flags flags, int minus);
-
+char				*spec_x_modify(int width, int prec, t_flags flags);
 char				*ft_strjoin(char const *s1, char const *s2);
 
 int					(*func[15])(va_list elem, t_flags flags);

@@ -46,7 +46,7 @@ int		ft_nbrlen(long int nbr)
 	return (i);
 }
 
-char	*ft_itoa(long int nbr)
+char	*ft_itoa(intmax_t nbr)
 {
 	char	*digit;
 	char	*it;

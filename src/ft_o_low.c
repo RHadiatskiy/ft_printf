@@ -20,10 +20,10 @@ char		*spec_o_modify(int width, int prec, t_flags flags)
 	int		is_max;
 
 	is_max = prec > (int)(ft_strlen(flags.args)) ? prec : (int)(ft_strlen(flags.args));
-	s_zero = ft_fill_symb('0', prec - (int)(ft_strlen(flags.args)));
+	s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
 	s_space = (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1))) ? \
-		(ft_fill_symb(' ', (width - is_max - 1))) : \
-			(ft_fill_symb(' ', width - is_max));
+		(fillsmb(' ', (width - is_max - 1))) : \
+			(fillsmb(' ', width - is_max));
 	res_d = ft_strjoin(s_zero, flags.args);
 	if (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1)))
 		res_d = ft_strjoin("0", res_d);

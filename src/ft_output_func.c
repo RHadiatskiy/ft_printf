@@ -27,9 +27,9 @@ int		ft_output_func(va_list elem, t_flags flags)
 //	func[7] = ft_o_high;
 	func[8] = ft_u_low;
 //	func[9] = ft_u_high;
-//	func[10] = ft_x_low;
-//	func[11] = ft_x_high;
-//	func[12] = ft_c_low;
+	func[10] = ft_x_low;
+	func[11] = ft_x_high;
+	func[12] = ft_c_low;
 //	func[13] = ft_c_high;
 	func[14] = ft_percent;
 	return ((*func[n])(elem, flags));

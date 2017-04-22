@@ -14,6 +14,7 @@
 
 int		main(void)
 {
-	printf("%05d\n", 42);
+	printf("%#x\n", 42);
+	printf("%s\n", ft_itoa_base(42, 16));
 	return (0);
 }

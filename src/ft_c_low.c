@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_u_low.c                                         :+:      :+:    :+:   */
+/*   ft_c_low.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/21 15:24:31 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/21 19:42:18 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/04/22 18:51:09 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/04/22 18:51:14 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char		*spec_u_modify(int width, int prec, t_flags flags, int minus)
+char		*spec_c_modify(int width, t_flags flags, char c)
 {
 	char	*res_d;
-	char	*s_zero;
 	char	*s_space;
-	int		is_max;
+	int		i;
 
-	is_max = prec > (int)(ft_strlen(flags.args)) ? prec : (int)(ft_strlen(flags.args));
-	s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
-	s_space = (minus == 0 && flags.plus == 0) ? \
-		(fillsmb(' ', width - is_max)) : (fillsmb(' ', (width - is_max - 1)));
-	res_d = ft_strjoin(s_zero, flags.args);
+	i = 0;
+	s_space = fillsmb(' ', width - 1);
+	res_d = (char *)malloc(sizeof(char) + 1);
+	res_d[i++] = c;
+	res_d[i] = '\0';
 	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 	(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
 }
 
-int			ft_u_low(va_list elem, t_flags flags)
+int			ft_c_low(va_list elem, t_flags flags)
 {
 	int		width;
-	int		prec;
-	int		r;
-	int		minus;
+	char	c;
 
-	minus = 0;
-	r = va_arg(elem, int);
-	flags.args = ft_itoa((unsigned int)r);
-	prec = flags.get_precision;
+	c = (char)va_arg(elem, void *);
 	width = flags.get_width;
-	flags.args = spec_u_modify(width, prec, flags, minus);
+	flags.args = spec_c_modify(width, flags, c);
 	return (ft_printing(flags.args));
 }
