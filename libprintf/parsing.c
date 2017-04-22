@@ -27,7 +27,7 @@ t_flags		parse_flags(va_list elem, char *str, t_flags flags)
 	int		i;
 
 	i = 1;
-	elem = NULL;
+	(void)elem;
 	while (str[i] && (ft_atoi(&str[i - 1]) == 0))
 	{
 		if (str[i] == '0' || str[i] == ' ' || \
@@ -107,7 +107,7 @@ t_flags		parse_length(va_list elem, char *str, t_flags flags)
 	int	i;
 
 	i = 0;
-	elem = NULL;
+	(void)elem;
 	while (str[i])
 	{
 		if (str[i] == 'h' || str[i] == 'l' || \

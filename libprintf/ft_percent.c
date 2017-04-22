@@ -18,7 +18,7 @@ int		ft_percent(va_list elem, t_flags flags)
 	int		width;
 
 	i = 1;
-	elem = NULL;
+	(void)elem;
 	width = flags.get_width;
 	while (flags.str[i] == ' ' && flags.str[i])
 		i++;
