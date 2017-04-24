@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 17:41:36 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/03/06 18:04:11 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/04/24 12:28:36 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/04/24 12:28:38 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "../include/ft_printf.h"
 
-char		*ft_itoa_base_x(uintmax_t value, int base);
-
-int		main(void)
+int					ft_p(va_list elem, t_flags flags)
 {
-	printf("u : %llu\n", 4294967296);
-	printf("U : %llU\n", 4294967296);
-	printf("null : %s\n", NULL);
-	return (0);
+	intmax_t	p;
+	
+	p = va_arg(elem, intmax_t);
+	flags.args = ft_strjoin("0x", ft_itoa_base(p, 16));
+	return (ft_printing(flags.args));
 }

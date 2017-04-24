@@ -12,11 +12,13 @@
 
 #include "../include/ft_printf.h"
 
+char		*ft_itoa_base_x(uintmax_t value, int base);
+
 char		*mal_uppercase(char *s)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int				i;
+	int				j;
+	char			*str;
 
 	i = 0;
 	j = 0;
@@ -35,15 +37,14 @@ char		*mal_uppercase(char *s)
 
 int			ft_x_high(va_list elem, t_flags flags)
 {
-	int		width;
-	int		prec;
-	int		r;
+	int				width;
+	int				prec;
+	uintmax_t		r;
 
-	r = va_arg(elem, int);
-	flags.args = ft_itoa_base((unsigned int)r, 16);
+	r = check_lenght(flags, va_arg(elem, uintmax_t));
+	flags.args = ft_itoa_base_x(r, 16);
 	prec = flags.get_precision;
 	width = flags.get_width;
-	flags.args = spec_x_modify(width, prec, flags);
-	flags.args = mal_uppercase(flags.args);
+	flags.args = mal_uppercase(spec_x_modify(width, prec, flags));
 	return (ft_printing(flags.args));
 }

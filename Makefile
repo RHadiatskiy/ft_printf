@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/ft_atoi.c src/ft_atoi_base.c \
+SRC = src/ft_atoi.c src/ft_x_high.c \
 		src/ft_d_low.c src/ft_flags_reset.c \
 		src/ft_i.c src/ft_isdigit.c \
 		src/ft_itoa.c src/ft_itoa_base.c \
@@ -23,7 +23,9 @@ SRC = src/ft_atoi.c src/ft_atoi_base.c \
 		src/ft_strlenchr.c src/ft_u_low.c \
 		src/ft_c_low.c src/ft_x_low.c \
 		src/parsing.c src/ft_strcmp.c \
-		src/ft_x_high.c ft_printf.c
+		src/ft_p.c src/ft_o_high.c \
+		src/ft_u_high.c src/ft_c_high.c \
+		ft_printf.c
 
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror

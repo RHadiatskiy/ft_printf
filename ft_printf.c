@@ -29,7 +29,7 @@ int				ft_print(va_list elem, const char *format)
 	int			i;
 	int			ret;
 	t_flags		flags;
-	
+
 	i = 0;
 	ret = 0;
 	while (format[i])
@@ -40,17 +40,17 @@ int				ft_print(va_list elem, const char *format)
 			i += 2;
 			ret += 1;
 		}
-		else if (format[i] == '%' && format[i + 1] != '%')
+		else if (format[i] == '%' && format[i + 1] != '%' && format[i + 1])
 		{
 			flags = flags_reset(flags);
 			flags.str = memaloc_str(format, &i);
 			flags = ft_parse(elem, flags);
 			ret += ft_output_func(elem, flags);
-	//		print_flags(flags);
-	//		write(1, "------------------------------\n", 31);
+			// print_flags(flags);
+			// write(1, "------------------------------\n", 31);
 		}
 		else
-			ret += write(1, &format[i++], 1);
+			ret += (format[i] == '%') ? i++ : (write(1, &format[i++], 1));
 	}
 	return (ret);
 }

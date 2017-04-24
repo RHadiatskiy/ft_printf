@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # define SPECIFICATE 	"sSpdDioOuUxXcC%"
-# define base_base 		base[17] = "0123456789abcdef";
 
 # include <stdarg.h>
 # include <stdio.h>
@@ -42,17 +41,7 @@ typedef struct		s_flags
 	unsigned int		ll : 1;
 	unsigned int		j : 1;
 	unsigned int		z : 1;
-
-/*	enum {
-		none,
-		hh,
-		h,
-		l,
-		ll,
-		j,
-		z
-	}					lenght;
-*/	char				specificate;
+	char				specificate;
 	char				*str;
 	char				*args;
 }					t_flags;
@@ -70,7 +59,6 @@ int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_to_lowcase(const char *str);
 int					sqr(int nb, int sq);
 int					ft_atoi(const char *str);
-int					ft_atoi_base(const char *str, int str_base);
 char				*ft_itoa(long int nbr);
 char				*ft_itoa_base(intmax_t value, int base);
 int					ft_nbrlen(long int nbr);
@@ -87,8 +75,12 @@ t_flags				parse_length(va_list elem, char *str, t_flags flags);
 int					ft_isdigit(int n);
 int					ft_printing(char *s);
 char				*fillsmb(char c, int n);
-char				*spec_d_modify(int width, int prec, t_flags flags, int minus);
+char				*spec_d_modify(int width, int prec, t_flags flags, int m);
 char				*spec_x_modify(int width, int prec, t_flags flags);
+char				*spec_o_modify(int width, int prec, t_flags flags);
+char				*spec_u_modify(int width, int prec, t_flags flags, int minus);
+intmax_t			check_lenght(t_flags flags, intmax_t d);
+
 char				*ft_strjoin(char const *s1, char const *s2);
 
 int					(*func[15])(va_list elem, t_flags flags);

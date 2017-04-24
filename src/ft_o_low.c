@@ -19,16 +19,23 @@ char		*spec_o_modify(int width, int prec, t_flags flags)
 	char	*s_space;
 	int		is_max;
 
-	is_max = prec > (int)(ft_strlen(flags.args)) ? prec : (int)(ft_strlen(flags.args));
-	s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
-	s_space = (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1))) ? \
+	is_max = prec > (int)(ft_strlen(flags.args)) ? \
+		prec : (int)(ft_strlen(flags.args));
+	if (flags.zero == 1 && flags.minus == 0)
+		s_zero = fillsmb('0', width - (prec > (int)ft_strlen(flags.args) \
+			? prec : (int)ft_strlen(flags.args)));
+	else
+		s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
+	s_space = (flags.hash == 1 && ((int)(prec - \
+		(int)(ft_strlen(flags.args)) < 1))) ? \
 		(fillsmb(' ', (width - is_max - 1))) : \
 			(fillsmb(' ', width - is_max));
 	res_d = ft_strjoin(s_zero, flags.args);
 	if (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1)))
 		res_d = ft_strjoin("0", res_d);
-	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
-	(res_d = ft_strjoin(s_space, res_d));
+	if (flags.zero == 0 || flags.minus == 1)
+		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
+		(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
 }
 

@@ -1,52 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_low.c                                         :+:      :+:    :+:   */
+/*   ft_c_high.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/20 14:33:31 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/21 19:41:15 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/04/24 14:43:45 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/04/24 14:43:47 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char		*spec_s_modify(int width, int prec, t_flags flags)
+char		*spec_c_high_modify(int width, t_flags flags, char c)
 {
 	char	*res_d;
 	char	*s_space;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
-	if (flags.precision == 1)
-	{
-		res_d = (char *)malloc(sizeof(char) * prec + 1);
-		while (prec > i)
-			res_d[i++] = flags.args[j++];
-		res_d[i] = '\0';
-	}
-	else
-		res_d = ft_strdup(flags.args);
 	if (flags.zero == 1 && flags.minus != 1)
-		s_space = fillsmb('0', width - ft_strlen(res_d));
+		s_space = fillsmb('0', width -1);
 	else
-		s_space = fillsmb(' ', width - ft_strlen(res_d));
+		s_space = fillsmb(' ', width - 1);
+	res_d = (char *)malloc(sizeof(char) + 1);
+	res_d[i++] = c;
+	res_d[i] = '\0';
 	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 	(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
 }
 
-int			ft_s_low(va_list elem, t_flags flags)
+int			ft_c_high(va_list elem, t_flags flags)
 {
 	int		width;
-	int		prec;
+	char	c;
 
-	flags.args = va_arg(elem, char *);
-	prec = flags.get_precision;
+	c = (char)va_arg(elem, void *);
 	width = flags.get_width;
-	flags.args = spec_s_modify(width, prec, flags);
+	flags.args = spec_c_high_modify(width, flags, c);
 	return (ft_printing(flags.args));
 }

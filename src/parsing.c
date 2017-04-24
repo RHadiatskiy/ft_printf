@@ -53,7 +53,7 @@ t_flags		parse_flags(va_list elem, char *str, t_flags flags)
 t_flags		parse_precision(va_list elem, char *str, t_flags flags)
 {
 	int		i;
-	
+
 	i = 1;
 	while (str[i])
 	{
