@@ -22,7 +22,9 @@ int			main(void)
 //	printf("------------------------------\n");
 //	printf("ret ft = %d\n", ft_printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
 //	printf("ret = %d\n", printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
-	printf("\nret = %d\n", printf("%U", 4294967296));
-	printf("\nret ft = %d\n", ft_printf("%U", 4294967296));
+	// printf("\nret = %d\n", printf("origin : @moulitest: %o", 0));
+	// printf("\nret ft = %d\n", ft_printf("my fun : @moulitest: %o", 0));
+	printf("\nret = %d\n", printf("origin : %8c", 0));
+	printf("\nret ft = %d\n", ft_printf("my fun : %8c", 0));
 	return (0);
 }

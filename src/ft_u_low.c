@@ -39,12 +39,16 @@ char		*spec_u_modify(int width, int prec, t_flags flags, int minus)
 
 	is_max = prec > (int)(ft_strlen(flags.args)) ? \
 		prec : (int)(ft_strlen(flags.args));
-	s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
+	if (flags.zero == 1 && flags.minus == 0 && flags.precision == 0)
+		s_zero = fillsmb('0', width - (prec > (int)ft_strlen(flags.args) ? prec : ft_strlen(flags.args)));
+	else
+		s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
 	s_space = (minus == 0 && flags.plus == 0) ? \
 		(fillsmb(' ', width - is_max)) : (fillsmb(' ', (width - is_max - 1)));
 	res_d = ft_strjoin(s_zero, flags.args);
-	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
-	(res_d = ft_strjoin(s_space, res_d));
+	if (flags.zero == 0 || flags.minus == 1 || flags.precision == 1)
+		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
+		(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
 }
 

@@ -47,6 +47,9 @@ int			ft_s_low(va_list elem, t_flags flags)
 	flags.args = va_arg(elem, char *);
 	prec = flags.get_precision;
 	width = flags.get_width;
-	flags.args = spec_s_modify(width, prec, flags);
+	if (flags.args == NULL)
+		flags.args = ft_strdup("(null)");
+	else
+		flags.args = spec_s_modify(width, prec, flags);
 	return (ft_printing(flags.args));
 }

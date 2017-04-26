@@ -28,7 +28,7 @@ t_flags		parse_flags(va_list elem, char *str, t_flags flags)
 
 	i = 1;
 	(void)elem;
-	while (str[i] && (ft_atoi(&str[i - 1]) == 0))
+	while (str[i] && (ft_atoi(&str[i - 1]) == 0) && str[i] != '.')
 	{
 		if (str[i] == '0' || str[i] == ' ' || \
 			str[i] == '+' || str[i] == '-' || \

@@ -47,6 +47,8 @@ int			ft_d_low(va_list elem, t_flags flags)
 	flags.args = ft_itoa_base(r, 10);
 	prec = flags.get_precision;
 	width = flags.get_width;
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && flags.precision == 1)
+		flags.args = ft_strdup("");
 	flags.args = spec_d_modify(width, prec, flags, minus);
 	return (ft_printing(flags.args));
 }

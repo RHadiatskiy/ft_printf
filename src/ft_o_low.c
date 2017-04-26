@@ -49,6 +49,9 @@ int			ft_o_low(va_list elem, t_flags flags)
 	flags.args = ft_itoa_base((unsigned int)r, 8);
 	prec = flags.get_precision;
 	width = flags.get_width;
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && flags.precision == 1)
+		flags.args = ft_strdup("");
+//	printf("args : <%s\n>", flags.args);
 	flags.args = spec_o_modify(width, prec, flags);
 	return (ft_printing(flags.args));
 }
