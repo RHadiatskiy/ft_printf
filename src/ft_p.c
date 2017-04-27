@@ -15,7 +15,7 @@
 int					ft_p(va_list elem, t_flags flags)
 {
 	intmax_t	p;
-	
+
 	p = va_arg(elem, intmax_t);
 	flags.args = ft_strjoin("0x", ft_itoa_base(p, 16));
 	return (ft_printing(flags.args));

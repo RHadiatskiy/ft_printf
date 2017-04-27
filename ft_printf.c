@@ -50,10 +50,12 @@ int				ft_print(va_list elem, const char *format)
 			// write(1, "------------------------------\n", 31);
 		}
 		else
+		{
 			if (format[i] == '%')
 				i++;
 			else
 				ret += (write(1, &format[i++], 1));
+		}
 	}
 	return (ret);
 }

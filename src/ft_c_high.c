@@ -20,7 +20,7 @@ char		*spec_c_high_modify(int width, t_flags flags, char c)
 
 	i = 0;
 	if (flags.zero == 1 && flags.minus != 1)
-		s_space = fillsmb('0', width -1);
+		s_space = fillsmb('0', width - 1);
 	else
 		s_space = fillsmb(' ', width - 1);
 	res_d = (char *)malloc(sizeof(char) + 1);

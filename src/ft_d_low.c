@@ -15,7 +15,7 @@
 static	char		*check_max(char *s)
 {
 	int		i;
-	int 	j;
+	int		j;
 	char	*str;
 
 	i = 0;
@@ -34,7 +34,7 @@ static	char		*check_max(char *s)
 	return (str);
 }
 
-intmax_t	check_lenght(t_flags flags, intmax_t d)
+intmax_t			check_lenght(t_flags flags, intmax_t d)
 {
 	if (flags.ll == 1)
 		return ((long long)d);
@@ -49,10 +49,10 @@ intmax_t	check_lenght(t_flags flags, intmax_t d)
 	else if (flags.hh == 1)
 		return ((char)d);
 	else
-		return ((int)d);	
+		return ((int)d);
 }
 
-char		*fillsmb(char c, int n)
+char				*fillsmb(char c, int n)
 {
 	char		*s;
 	int			i;
@@ -68,7 +68,7 @@ char		*fillsmb(char c, int n)
 	return (s);
 }
 
-char		*spec_d_modify(int width, int prec, t_flags flags, int m)
+char				*spec_d_modify(int width, int prec, t_flags flags, int m)
 {
 	char		*res_d;
 	char		*s_zero;
@@ -98,7 +98,7 @@ char		*spec_d_modify(int width, int prec, t_flags flags, int m)
 	return (res_d);
 }
 
-int			ft_d_low(va_list elem, t_flags flags)
+int					ft_d_low(va_list elem, t_flags flags)
 {
 	int			width;
 	int			prec;
@@ -115,7 +115,8 @@ int			ft_d_low(va_list elem, t_flags flags)
 	flags.args = ft_itoa_base(r, 10);
 	prec = flags.get_precision;
 	width = flags.get_width;
-	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && flags.precision == 1)
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && \
+		flags.precision == 1)
 		flags.args = ft_strdup("");
 	flags.args = spec_d_modify(width, prec, flags, minus);
 	return (ft_printing(check_max(flags.args)));

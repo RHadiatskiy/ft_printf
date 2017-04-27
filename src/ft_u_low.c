@@ -12,8 +12,6 @@
 
 #include "../include/ft_printf.h"
 
-char		*ft_itoa_base_x(uintmax_t value, int base);
-
 intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d)
 {
 	if (flags.ll == 1)
@@ -29,7 +27,7 @@ intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d)
 	else if (flags.hh == 1)
 		return ((unsigned char)d);
 	else
-		return ((unsigned int)d);	
+		return ((unsigned int)d);
 }
 
 char		*spec_u_modify(int width, int prec, t_flags flags, int minus)
@@ -42,7 +40,8 @@ char		*spec_u_modify(int width, int prec, t_flags flags, int minus)
 	is_max = prec > (int)(ft_strlen(flags.args)) ? \
 		prec : (int)(ft_strlen(flags.args));
 	if (flags.zero == 1 && flags.minus == 0 && flags.precision == 0)
-		s_zero = fillsmb('0', width - (prec > (int)ft_strlen(flags.args) ? prec : ft_strlen(flags.args)));
+		s_zero = fillsmb('0', width - (prec > (int)ft_strlen(flags.args) ? \
+			prec : ft_strlen(flags.args)));
 	else
 		s_zero = fillsmb('0', prec - (int)(ft_strlen(flags.args)));
 	s_space = (minus == 0 && flags.plus == 0) ? \

@@ -23,7 +23,7 @@ intmax_t	check_lenght_u_high(t_flags flags, intmax_t d)
 	else if (flags.l == 1)
 		return ((unsigned long)d);
 	else
-		return ((unsigned long int)d);	
+		return ((unsigned long int)d);
 }
 
 int			ft_u_high(va_list elem, t_flags flags)

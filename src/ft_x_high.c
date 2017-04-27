@@ -12,9 +12,6 @@
 
 #include "../include/ft_printf.h"
 
-char		*ft_itoa_base_x(uintmax_t value, int base);
-intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d);
-
 char		*mal_uppercase(char *s)
 {
 	int				i;
