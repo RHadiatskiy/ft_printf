@@ -50,7 +50,10 @@ int				ft_print(va_list elem, const char *format)
 			// write(1, "------------------------------\n", 31);
 		}
 		else
-			ret += (format[i] == '%') ? i++ : (write(1, &format[i++], 1));
+			if (format[i] == '%')
+				i++;
+			else
+				ret += (write(1, &format[i++], 1));
 	}
 	return (ret);
 }
@@ -87,13 +90,15 @@ char			*ft_strchrdup(const char *str, char chr)
 
 	i = 1;
 	j = 0;
-	while (str[i] && str[i] != chr)
+	while (str[i] && str[i] != chr && \
+		(ft_strlenchr(SPECIFICATE, str[i] == -1)))
 		i++;
 	if (!(dup = (char *)malloc(sizeof(char) * i + 2)))
 		return (NULL);
 	i = 1;
 	dup[j++] = str[0];
-	while (str[i] && str[i] != chr)
+	while (str[i] && str[i] != chr && \
+		(ft_strlenchr(SPECIFICATE, str[i]) == -1))
 		dup[j++] = str[i++];
 	dup[j++] = str[i++];
 	dup[j] = '\0';
@@ -106,14 +111,14 @@ char			*memaloc_str(const char *str, int *i)
 	char		*s;
 
 	l = *i;
-	*i += 1;
+	(*i) += 1;
 	while (str[*i] != 's' && str[*i] != 'S' && str[*i] != 'p' && \
 		str[*i] != 'd' && str[*i] != 'D' && str[*i] != 'i' && \
 		str[*i] != 'o' && str[*i] != 'O' && str[*i] != 'u' && \
 		str[*i] != 'U' && str[*i] != 'x' && str[*i] != 'X' && \
-		str[*i] != 'c' && str[*i] != 'C' && str[*i] != '%' && str[*i])
+		str[*i] != 'c' && str[*i] != 'C' && str[*i] != '%' && str[(*i) + 1])
 		(*i)++;
-	if (!(s = ft_strchrdup(&str[l], str[*i])))
+	if (!(s = ft_strchrdup(&str[l], str[(*i) + 1])))
 		return (NULL);
 	(*i)++;
 	return (s);

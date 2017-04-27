@@ -12,6 +12,28 @@
 
 #include "../include/ft_printf.h"
 
+static	char		*check_max(char *s)
+{
+	int		i;
+	int 	j;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	if (s[i] == '-' && s[i + 1] == '-' && ft_isdigit(s[i + 2]))
+	{
+		if (!(str = (char *)malloc(sizeof(char) * ft_strlen(s))))
+			return (NULL);
+		i++;
+		while (s[i])
+			str[j++] = s[i++];
+		str[j] = '\0';
+	}
+	else
+		return (s);
+	return (str);
+}
+
 intmax_t	check_lenght(t_flags flags, intmax_t d)
 {
 	if (flags.ll == 1)
@@ -28,29 +50,6 @@ intmax_t	check_lenght(t_flags flags, intmax_t d)
 		return ((char)d);
 	else
 		return ((int)d);	
-}
-
-int			ft_d_low(va_list elem, t_flags flags)
-{
-	int			width;
-	int			prec;
-	long long	r;
-	int			minus;
-
-	minus = 0;
-	r = check_lenght(flags, va_arg(elem, intmax_t));
-	if (r < 0)
-	{
-		r *= -1;
-		minus = 1;
-	}
-	flags.args = ft_itoa_base(r, 10);
-	prec = flags.get_precision;
-	width = flags.get_width;
-	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && flags.precision == 1)
-		flags.args = ft_strdup("");
-	flags.args = spec_d_modify(width, prec, flags, minus);
-	return (ft_printing(flags.args));
 }
 
 char		*fillsmb(char c, int n)
@@ -97,4 +96,27 @@ char		*spec_d_modify(int width, int prec, t_flags flags, int m)
 		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 		(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
+}
+
+int			ft_d_low(va_list elem, t_flags flags)
+{
+	int			width;
+	int			prec;
+	long long	r;
+	int			minus;
+
+	minus = 0;
+	r = check_lenght(flags, va_arg(elem, intmax_t));
+	if (r < 0)
+	{
+		r *= -1;
+		minus = 1;
+	}
+	flags.args = ft_itoa_base(r, 10);
+	prec = flags.get_precision;
+	width = flags.get_width;
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && flags.precision == 1)
+		flags.args = ft_strdup("");
+	flags.args = spec_d_modify(width, prec, flags, minus);
+	return (ft_printing(check_max(flags.args)));
 }

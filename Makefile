@@ -25,7 +25,7 @@ SRC = src/ft_atoi.c src/ft_x_high.c \
 		src/parsing.c src/ft_strcmp.c \
 		src/ft_p.c src/ft_o_high.c \
 		src/ft_u_high.c src/ft_c_high.c \
-		ft_printf.c
+		src/ft_none.c ft_printf.c
 
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror

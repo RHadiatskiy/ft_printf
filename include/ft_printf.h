@@ -83,7 +83,7 @@ intmax_t			check_lenght(t_flags flags, intmax_t d);
 
 char				*ft_strjoin(char const *s1, char const *s2);
 
-int					(*func[15])(va_list elem, t_flags flags);
+int					(*func[16])(va_list elem, t_flags flags);
 
 int					ft_output_func(va_list elem, t_flags flags);
 
@@ -102,5 +102,6 @@ int					ft_x_high(va_list elem, t_flags flags);
 int					ft_c_low(va_list elem, t_flags flags);
 int					ft_c_high(va_list elem, t_flags flags);
 int					ft_percent(va_list elem, t_flags flags);
+int					ft_none(va_list elem, t_flags flags);
 
 #endif

@@ -13,6 +13,7 @@
 #include "../include/ft_printf.h"
 
 char		*ft_itoa_base_x(uintmax_t value, int base);
+intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d);
 
 char		*spec_x_modify(int width, int prec, t_flags flags)
 {
@@ -48,7 +49,7 @@ int			ft_x_low(va_list elem, t_flags flags)
 	int				prec;
 	intmax_t		r;
 
-	r = check_lenght(flags, va_arg(elem, uintmax_t));
+	r = check_lenght_unsigned(flags, va_arg(elem, uintmax_t));
 	flags.args = ft_itoa_base_x(r, 16);
 	prec = flags.get_precision;
 	width = flags.get_width;

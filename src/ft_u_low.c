@@ -12,6 +12,8 @@
 
 #include "../include/ft_printf.h"
 
+char		*ft_itoa_base_x(uintmax_t value, int base);
+
 intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d)
 {
 	if (flags.ll == 1)
@@ -61,7 +63,7 @@ int			ft_u_low(va_list elem, t_flags flags)
 
 	minus = 0;
 	r = check_lenght_unsigned(flags, va_arg(elem, intmax_t));
-	flags.args = ft_itoa_base(r, 10);
+	flags.args = ft_itoa_base_x(r, 10);
 	prec = flags.get_precision;
 	width = flags.get_width;
 	flags.args = spec_u_modify(width, prec, flags, minus);

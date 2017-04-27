@@ -24,7 +24,7 @@ int			main(void)
 //	printf("ret = %d\n", printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
 	// printf("\nret = %d\n", printf("origin : @moulitest: %o", 0));
 	// printf("\nret ft = %d\n", ft_printf("my fun : @moulitest: %o", 0));
-	printf("\nret = %d\n", printf("origin : %8c", 0));
-	printf("\nret ft = %d\n", ft_printf("my fun : %8c", 0));
+	printf("\nret = %d\n", printf("%-5+d", 42));
+	printf("\nret ft = %d\n", ft_printf("%-5+d", 42));
 	return (0);
 }
