@@ -84,6 +84,7 @@ intmax_t		check_lenght(t_flags flags, intmax_t d);
 char			*ft_itoa_base_x(uintmax_t value, int base);
 intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*check_max(char *s);
 
 int				(*func[16])(va_list elem, t_flags flags);
 

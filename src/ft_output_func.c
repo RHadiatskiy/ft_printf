@@ -23,7 +23,7 @@ int		ft_output_func(va_list elem, t_flags flags)
 //	func[1] = ft_s_high;
 	func[2] = ft_p;
 	func[3] = ft_d_low;
-//	func[4] = ft_d_high;
+	func[4] = ft_d_high;
 	func[5] = ft_i;
 	func[6] = ft_o_low;
 	func[7] = ft_o_high;

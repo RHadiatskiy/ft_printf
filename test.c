@@ -16,8 +16,7 @@ char		*ft_itoa_base_x(uintmax_t value, int base);
 
 int		main(void)
 {
-	printf("u : %llu\n", 4294967296);
-	printf("U : %llU\n", 4294967296);
-	printf("null : %s\n", NULL);
+	printf("d : %d\n", -4294967296);
+	printf("D : %D\n", -4294967296);
 	return (0);
 }
