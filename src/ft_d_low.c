@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-static	char		*check_max(char *s)
+char				*check_max(char *s)
 {
 	int		i;
 	int		j;

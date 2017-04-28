@@ -31,7 +31,8 @@ char		*spec_o_modify(int width, int prec, t_flags flags)
 		(fillsmb(' ', (width - is_max - 1))) : \
 			(fillsmb(' ', width - is_max));
 	res_d = ft_strjoin(s_zero, flags.args);
-	if (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1)))
+	if (flags.hash == 1 && ((int)(prec - (int)(ft_strlen(flags.args)) < 1)) \
+		&& (ft_strcmp(flags.args, "0") != 0))
 		res_d = ft_strjoin("0", res_d);
 	if (flags.zero == 0 || flags.minus == 1)
 		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
@@ -41,12 +42,12 @@ char		*spec_o_modify(int width, int prec, t_flags flags)
 
 int			ft_o_low(va_list elem, t_flags flags)
 {
-	int		width;
-	int		prec;
-	int		r;
+	int				width;
+	int				prec;
+	uintmax_t		r;
 
-	r = va_arg(elem, int);
-	flags.args = ft_itoa_base((unsigned int)r, 8);
+	r = check_lenght_unsigned(flags, va_arg(elem, uintmax_t));
+	flags.args = ft_itoa_base_x(r, 8);
 	prec = flags.get_precision;
 	width = flags.get_width;
 	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && \

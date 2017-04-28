@@ -22,6 +22,7 @@
 # include <string.h>
 # include <inttypes.h>
 # include <stdint.h>
+# include <limits.h>
 
 typedef struct	s_flags
 {
@@ -81,7 +82,7 @@ char			*spec_o_modify(int width, int prec, t_flags flags);
 char			*spec_u_modify(int width, int prec, t_flags flags, int minus);
 intmax_t		check_lenght(t_flags flags, intmax_t d);
 char			*ft_itoa_base_x(uintmax_t value, int base);
-intmax_t		check_lenght_unsigned(t_flags flags, intmax_t d);
+intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
 
 int				(*func[16])(va_list elem, t_flags flags);

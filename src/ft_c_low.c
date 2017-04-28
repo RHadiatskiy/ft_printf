@@ -42,3 +42,4 @@ int			ft_c_low(va_list elem, t_flags flags)
 	flags.args = spec_c_modify(width, flags, c);
 	return (ft_printing(flags.args));
 }
+

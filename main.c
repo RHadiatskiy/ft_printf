@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
-//#include "include/libprintf.h"
 
 int			main(void)
 {
@@ -22,9 +21,16 @@ int			main(void)
 //	printf("------------------------------\n");
 //	printf("ret ft = %d\n", ft_printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
 //	printf("ret = %d\n", printf("%*.*d%   3%ololo%5s%0+- #%ss% 4%\n", 5, 3, 42, "..."));
-	// printf("\nret = %d\n", printf("origin : @moulitest: %o", 0));
-	// printf("\nret ft = %d\n", ft_printf("my fun : @moulitest: %o", 0));
-	printf("\nret = %d\n", printf("%-5+d", 42));
-	printf("\nret ft = %d\n", ft_printf("%-5+d", 42));
+	// printf("\nret = %d\n", printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
+	// printf("\nret ft = %d\n", ft_printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
+	// printf("\nret = %d\n", printf("%hhO, %hhO", 0, USHRT_MAX));
+	// printf("\nret ft = %d\n", ft_printf("%hhO, %hhO", 0, USHRT_MAX));
+	// printf("\nret = %d\n", printf("{%-15Z}", 123));
+	// printf("\nret ft = %d\n", ft_printf("{%-15Z}", 123));
+	// printf("\nret = %d\n", printf("%O", LONG_MIN));
+	// printf("\nret ft = %d\n", ft_printf("%O", LONG_MIN));
+	printf("\nret = %d\n", printf("{% 03d}", 0));
+	printf("\nret ft = %d\n", ft_printf("{% 03d}", 0));
+
 	return (0);
 }

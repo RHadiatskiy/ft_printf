@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-intmax_t	check_lenght_unsigned(t_flags flags, intmax_t d)
+intmax_t	check_lenght_unsigned(t_flags flags, uintmax_t d)
 {
 	if (flags.ll == 1)
 		return ((unsigned long long)d);
@@ -57,14 +57,17 @@ int			ft_u_low(va_list elem, t_flags flags)
 {
 	int				width;
 	int				prec;
-	intmax_t		r;
+	uintmax_t		r;
 	int				minus;
 
 	minus = 0;
-	r = check_lenght_unsigned(flags, va_arg(elem, intmax_t));
+	r = check_lenght_unsigned(flags, va_arg(elem, uintmax_t));
 	flags.args = ft_itoa_base_x(r, 10);
 	prec = flags.get_precision;
 	width = flags.get_width;
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && \
+		flags.precision == 1)
+		flags.args = ft_strdup("");
 	flags.args = spec_u_modify(width, prec, flags, minus);
 	return (ft_printing(flags.args));
 }

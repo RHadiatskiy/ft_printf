@@ -12,26 +12,28 @@
 
 #include "../include/ft_printf.h"
 
+char		*check_max(char *s);
+
 int			ft_i(va_list elem, t_flags flags)
 {
-	int		width;
-	int		prec;
-	int		r;
-	int		minus;
+	int				width;
+	int				prec;
+	intmax_t		r;
+	int				minus;
 
 	minus = 0;
-	r = va_arg(elem, int);
+	r = check_lenght(flags, va_arg(elem, intmax_t));
 	if (r < 0)
 	{
 		r *= -1;
 		minus = 1;
 	}
-	flags.args = ft_itoa(r);
+	flags.args = ft_itoa_base(r, 10);
 	prec = flags.get_precision;
 	width = flags.get_width;
 	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && \
 		flags.precision == 1)
 		flags.args = ft_strdup("");
 	flags.args = spec_d_modify(width, prec, flags, minus);
-	return (ft_printing(flags.args));
+	return (ft_printing(check_max(flags.args)));
 }

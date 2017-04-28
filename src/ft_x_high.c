@@ -43,6 +43,9 @@ int			ft_x_high(va_list elem, t_flags flags)
 	flags.args = ft_itoa_base_x(r, 16);
 	prec = flags.get_precision;
 	width = flags.get_width;
+	if ((flags.zero != 1) && (ft_strcmp(flags.args, "0") == 0) && \
+		flags.precision == 1)
+		flags.args = ft_strdup("");
 	flags.args = mal_uppercase(spec_x_modify(width, prec, flags));
 	return (ft_printing(flags.args));
 }
