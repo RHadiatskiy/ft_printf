@@ -19,6 +19,13 @@ t_flags		ft_parse(va_list elem, t_flags flags)
 	flags = parse_precision(elem, flags.str, flags);
 	flags = parse_length(elem, flags.str, flags);
 	flags.specificate = flags.str[ft_strlen(flags.str) - 1];
+	if (flags.get_width < 0)
+	{
+		flags.get_width *= -1;
+		flags.minus = 1;
+	}
+	if (flags.get_precision < 0)
+		flags.precision = 0;
 	return (flags);
 }
 
@@ -56,14 +63,15 @@ t_flags		parse_precision(va_list elem, char *str, t_flags flags)
 	int		i;
 
 	i = 1;
-	(void)elem;
 	while (str[i])
 	{
 		if (str[i++] == '.')
 		{
 			flags.precision = 1;
 			flags.get_precision = 0;
-			if (ft_isdigit(str[i]))
+			if (str[i] == '*')
+				flags.get_precision = va_arg(elem, int);
+			else if (ft_isdigit(str[i]))
 				flags.get_precision = ft_atoi(&str[i++]);
 		}
 	}
@@ -75,15 +83,20 @@ t_flags		parse_width(va_list elem, char *str, t_flags flags)
 	int		i;
 
 	i = 1;
-	(void)elem;
-	while (str[i] != '.' && str[i] != 'l' && \
-		str[i] != 'h' && str[i] != 'j' && \
-		str[i] != 'z' && str[i] != '%' && \
+	while (str[i] != '.' && str[i] != 'l' && str[i] != 'h' && \
+		str[i] != 'j' && str[i] != 'z' && str[i] != '%' && \
 		str[i] && ft_strlenchr(SPECIFICATE, str[i]) == -1)
 	{
-		if (ft_isdigit(str[i]) == 1)
+		if (str[i] == '*')
 		{
-			if (flags.width == 0)
+			flags.width = 1;
+			flags.asterix_wdt = 1;
+			flags.get_width = va_arg(elem, int);
+			i++;
+		}
+		else if (ft_isdigit(str[i]) == 1)
+		{
+			if (flags.width == 0 || flags.asterix_wdt == 1)
 				flags.get_width = 0;
 			flags.get_width = flags.get_width * 10 + (str[i++] - '0');
 			flags.width = 1;

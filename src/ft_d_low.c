@@ -78,7 +78,7 @@ char				*spec_d_modify(int width, int prec, t_flags flags, int m)
 	is_max = prec > (int)(ft_strlen(flags.args)) ? \
 		prec : (int)(ft_strlen(flags.args));
 	if (flags.zero == 1 && flags.precision == 0 && flags.minus == 0)
-		s_zero = (flags.plus == 1 || m == 1) ? \
+		s_zero = (flags.plus == 1 || m == 1 || flags.space == 1) ? \
 		fillsmb('0', width - ft_strlen(flags.args) - 1) : \
 		fillsmb('0', width - ft_strlen(flags.args));
 	else

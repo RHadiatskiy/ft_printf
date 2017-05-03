@@ -33,9 +33,10 @@ typedef struct	s_flags
 	unsigned int		hash : 1;
 	unsigned int		width : 1;
 	unsigned int		precision : 1;
-	unsigned int		get_width;
-	unsigned int		get_precision;
-	unsigned int		asterix : 1;
+	int					get_width;
+	int					get_precision;
+	unsigned int		asterix_wdt : 1;
+	unsigned int		asterix_pre : 1;
 	unsigned int		h : 1;
 	unsigned int		hh : 1;
 	unsigned int		l : 1;
