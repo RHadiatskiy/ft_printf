@@ -29,8 +29,12 @@ int			main(void)
 	// printf("\nret ft = %d\n", ft_printf("{%-15Z}", 123));
 	// printf("\nret = %d\n", printf("%O", LONG_MIN));
 	// printf("\nret ft = %d\n", ft_printf("%O", LONG_MIN));
-	printf("\nret = %d\n", printf("{% 03D}", 0));
-	printf("\nret ft = %d\n", ft_printf("{% 03D}", 0));
+	// printf("\nret = %d\n", printf("%2c", 0));
+	// printf("\nret ft = %d\n", ft_printf("%2c", 0));
+	printf("\nret = %d\n", printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256));
+	printf("\nret ft = %d\n", ft_printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256));
+	printf("\nret = %d\n", printf("%#.x %#.0x", 0, 0));
+	printf("\nret ft = %d\n", ft_printf("%#.x %#.0x", 0, 0));
 
 	return (0);
 }
