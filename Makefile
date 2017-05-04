@@ -26,6 +26,7 @@ SRC = src/ft_atoi.c src/ft_x_high.c \
 		src/ft_p.c src/ft_o_high.c \
 		src/ft_u_high.c src/ft_c_high.c \
 		src/ft_none.c src/ft_d_high.c \
+		src/u_mask.c src/ft_s_high.c \
 		ft_printf.c
 
 NAME = libftprintf.a

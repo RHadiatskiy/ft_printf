@@ -14,9 +14,9 @@
 
 char		*spec_c_modify(int width, t_flags flags, char c)
 {
-	char	*res_d;
-	char	*s_space;
-	int		i;
+	char		*res_d;
+	char		*s_space;
+	int			i;
 
 	i = 0;
 	if (flags.zero == 1 && flags.minus != 1)
@@ -33,13 +33,15 @@ char		*spec_c_modify(int width, t_flags flags, char c)
 
 int			ft_c_low(va_list elem, t_flags flags)
 {
-	int		width;
-	char	c;
+	int			width;
+	wchar_t		c;
 
-	if (!(c = (char)va_arg(elem, void *)) && flags.width == 0)
+	if (!(c = (wchar_t)va_arg(elem, void *)) && flags.width == 0)
 		return (1);
 	width = flags.get_width;
 	flags.args = spec_c_modify(width, flags, c);
+	if (flags.l == 1)
+		return (choose_mask(c));
 	return (ft_printing(flags.args));
 }
 

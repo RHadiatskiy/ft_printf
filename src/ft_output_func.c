@@ -20,7 +20,7 @@ int		ft_output_func(va_list elem, t_flags flags)
 	if (n == -1)
 		n = 15;
 	func[0] = ft_s_low;
-//	func[1] = ft_s_high;
+	func[1] = ft_s_high;
 	func[2] = ft_p;
 	func[3] = ft_d_low;
 	func[4] = ft_d_high;

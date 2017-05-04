@@ -16,7 +16,22 @@ char		*ft_itoa_base_x(uintmax_t value, int base);
 
 int		main(void)
 {
-	printf("d : %d\n", -4294967296);
-	printf("D : %D\n", -4294967296);
-	return (0);
+	// unsigned char c;
+ //    c = 0xe1;
+ //    write(1, &c, 1);
+ //    c = 0x88;
+ //    write(1, &c, 1);
+ //    c = 0xb4;
+ //    write(1, &c, 1);
+ //    c = 0x0a;
+ //    write(1, &c, 1);
+	int				a;
+	unsigned int 	b;
+	a = 42;
+	b = -42;
+    printf("42 : %c\n", 42);
+    printf("-42 : %c\n", -42);
+    printf("a : %c\n", a);
+    printf("b : %c\n", b);
+    return (0);
 }

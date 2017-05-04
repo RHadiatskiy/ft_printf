@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
+#include <locale.h>
 
 int			main(void)
 {
+	setlocale(LC_ALL, "en_US.UTF-8");
 //  ft_printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
 //  printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
 //	ft_printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
@@ -35,7 +37,9 @@ int			main(void)
 	// printf("\nret ft = %d\n", ft_printf("%C", L'ÁM-^L´'));
 	// printf("\nret = %d\n", printf("{%*d}", -5, 42));
 	// printf("\nret ft = %d\n", ft_printf("{%*d}", -5, 42));
-	printf("\nret = %d\n", printf("{%05.*d}", -15, 42));
-	printf("\nret ft = %d\n", ft_printf("{%05.*d}", -15, 42));
+	// printf("\nret = %d\n", printf("%Zoooos", "ololo"));
+	// printf("\nret ft = %d\n", ft_printf("%Zoooos", "ololo"));
+	printf("\nret = %d\n", printf("%-55S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	printf("\nret ft = %d\n", ft_printf("%.S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
 	return (0);
 }

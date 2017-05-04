@@ -46,6 +46,7 @@ typedef struct	s_flags
 	char				specificate;
 	char				*str;
 	char				*args;
+	int					n;
 }				t_flags;
 
 int				ft_printf(const char *format, ...);
@@ -86,6 +87,7 @@ char			*ft_itoa_base_x(uintmax_t value, int base);
 intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*check_max(char *s);
+int				choose_mask(wchar_t value);
 
 int				(*func[16])(va_list elem, t_flags flags);
 

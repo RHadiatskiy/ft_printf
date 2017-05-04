@@ -44,7 +44,9 @@ int			ft_s_low(va_list elem, t_flags flags)
 	int		width;
 	int		prec;
 
-	flags.args = va_arg(elem, char *);
+	if (flags.l == 1)
+		return (ft_s_high(elem, flags));
+	flags.args = (char *)va_arg(elem, void *);
 	prec = flags.get_precision;
 	width = flags.get_width;
 	if (flags.args == NULL)
