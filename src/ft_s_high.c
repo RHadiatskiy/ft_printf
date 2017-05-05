@@ -27,7 +27,11 @@ int			ft_s_high(va_list elem, t_flags flags)
 		flags.args = ft_strdup("(null)");
 		return (ft_printing(flags.args));
 	}
-	while (s[i])
-		n += choose_mask(s[i++]);
+	if (flags.precision == 1)
+		while(s[i] && i < (flags.get_precision - 1))
+			n += choose_mask(s[i++]);
+	else
+		while (s[i])
+			n += choose_mask(s[i++]);
 	return (n);
 }

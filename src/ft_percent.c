@@ -36,5 +36,6 @@ int		ft_percent(va_list elem, t_flags flags)
 		return (flags.width == 1 && flags.get_width != 0 ? flags.get_width : 1);
 	}
 	else
+//		ret += write(1, "%", 1);
 		return (ret);
 }

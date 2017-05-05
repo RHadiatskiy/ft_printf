@@ -48,6 +48,8 @@ int				ft_print(va_list elem, const char *format)
 			ret += ft_output_func(elem, flags);
 			// print_flags(flags);
 			// write(1, "------------------------------\n", 31);
+			free(flags.str);
+			free(flags.args);
 		}
 		else
 		{

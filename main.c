@@ -39,7 +39,19 @@ int			main(void)
 	// printf("\nret ft = %d\n", ft_printf("{%*d}", -5, 42));
 	// printf("\nret = %d\n", printf("%Zoooos", "ololo"));
 	// printf("\nret ft = %d\n", ft_printf("%Zoooos", "ololo"));
-	printf("\nret = %d\n", printf("%-55S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
-	printf("\nret ft = %d\n", ft_printf("%.S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	// printf("------------------------------------------\n");
+	// printf("\nret = %d\n", printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	// printf("\nret ft = %d\n", ft_printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	// printf("------------------------------------------\n");
+	// printf("\nret = %d\n", printf("{%-05Zzz}", 0));
+	// printf("\nret ft = %d\n", ft_printf("{%-05Zzz}", 0));
+	// printf("------------------------------------------\n");
+	// printf("\nret = %d\n", printf("{%010R}"));
+	// printf("\nret ft = %d\n", ft_printf("{%010R}"));
+	printf("------------------------------------------\n");
+	printf("\nret = %d\n", printf("%5%"));
+	printf("\nret ft = %d\n", ft_printf("%5%"));
+	printf("------------------------------------------\n");
+	
 	return (0);
 }

@@ -88,7 +88,6 @@ intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*check_max(char *s);
 int				choose_mask(wchar_t value);
-
 int				(*func[16])(va_list elem, t_flags flags);
 
 int				ft_output_func(va_list elem, t_flags flags);

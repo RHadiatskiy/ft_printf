@@ -12,23 +12,31 @@
 
 #include "../include/ft_printf.h"
 
-char		*spec_c_modify(int width, t_flags flags, char c)
+int			spec_c_modify(int width, t_flags flags, char c)
 {
-	char		*res_d;
 	char		*s_space;
 	int			i;
+	int			n;
 
+	n = 0;
 	i = 0;
 	if (flags.zero == 1 && flags.minus != 1)
 		s_space = fillsmb('0', width - 1);
 	else
 		s_space = fillsmb(' ', width - 1);
-	res_d = (char *)malloc(sizeof(char) + 1);
-	res_d[i++] = c;
-	res_d[i] = '\0';
-	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
-	(res_d = ft_strjoin(s_space, res_d));
-	return (res_d);
+	if (flags.minus == 1)
+	{
+		n += write(1, &c, 1);
+		while (s_space[i])
+			n += write(1, &s_space[i++], 1);
+	}
+	else
+	{
+		while (s_space[i])
+			n += write(1, &s_space[i++], 1);
+		n += write(1, &c, 1);
+	}
+	return (n);
 }
 
 int			ft_c_low(va_list elem, t_flags flags)
@@ -36,12 +44,10 @@ int			ft_c_low(va_list elem, t_flags flags)
 	int			width;
 	wchar_t		c;
 
-	if (!(c = (wchar_t)va_arg(elem, void *)) && flags.width == 0)
-		return (1);
+	c = (wchar_t)va_arg(elem, void *); 
 	width = flags.get_width;
-	flags.args = spec_c_modify(width, flags, c);
 	if (flags.l == 1)
 		return (choose_mask(c));
-	return (ft_printing(flags.args));
+	return (spec_c_modify(width, flags, c));
 }
 

@@ -51,7 +51,5 @@ int			ft_s_low(va_list elem, t_flags flags)
 	width = flags.get_width;
 	if (flags.args == NULL)
 		flags.args = ft_strdup("(null)");
-	else
-		flags.args = spec_s_modify(width, prec, flags);
-	return (ft_printing(flags.args));
+	return (ft_printing(spec_s_modify(width, prec, flags)));
 }
