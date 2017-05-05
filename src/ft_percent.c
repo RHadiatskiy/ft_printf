@@ -12,6 +12,31 @@
 
 #include "../include/ft_printf.h"
 
+int			ft_none_double(va_list elem, t_flags flags)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	(void)elem;
+	while (flags.str[i])
+	{
+		if ((ft_strlenchr(SPECIFICATE, flags.str[i]) == -1) && \
+			flags.str[i] != 'l' && flags.str[i] != 'h' && \
+			flags.str[i] != 'j' && flags.str[i] != 'z' && \
+			flags.str[i] != ' ' && flags.str[i] != '.' && \
+			flags.str[i] != '-' && flags.str[i] != '+' && \
+			flags.str[i] != '#' && !ft_isdigit(flags.str[i]))
+			while ((ft_strlenchr(SPECIFICATE, flags.str[i]) == -1) && \
+				flags.str[i])
+				count += write(1, &flags.str[i++], 1);
+		else
+			i++;
+	}
+	return (count);
+}
+
 int		ft_percent(va_list elem, t_flags flags)
 {
 	int		i;
@@ -22,7 +47,7 @@ int		ft_percent(va_list elem, t_flags flags)
 	ret = 0;
 	(void)elem;
 	width = flags.get_width;
-	if ((ret = (ft_none(elem, flags))) == 0)
+	if ((ret = (ft_none_double(elem, flags))) == 0)
 	{
 		while (flags.str[i] == ' ' && flags.str[i])
 			i++;
@@ -36,6 +61,5 @@ int		ft_percent(va_list elem, t_flags flags)
 		return (flags.width == 1 && flags.get_width != 0 ? flags.get_width : 1);
 	}
 	else
-//		ret += write(1, "%", 1);
 		return (ret);
 }

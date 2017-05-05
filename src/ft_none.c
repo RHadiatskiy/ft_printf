@@ -12,18 +12,18 @@
 
 #include "../include/ft_printf.h"
 
-// int			print_space(t_flags flags)
-// {
-// 	char	*space;
-// 	int		i;
+int			print_space(t_flags flags)
+{
+	char	*space;
+	int		i;
 
-// 	i = 0;
-// 	space = (flags.zero == 1 && flags.minus == 0) ? \
-// 	fillsmb('0', flags.get_width - 1) : fillsmb(' ', flags.get_width - 1);
-// 	while (space[i])
-// 		write(1, &space[i++], 1);
-// 	return (i);
-// }
+	i = 0;
+	space = (flags.zero == 1 && flags.minus == 0) ? \
+	fillsmb('0', flags.get_width - 1) : fillsmb(' ', flags.get_width - 1);
+	while (space[i])
+		write(1, &space[i++], 1);
+	return (i);
+}
 
 int			ft_none(va_list elem, t_flags flags)
 {
@@ -33,8 +33,8 @@ int			ft_none(va_list elem, t_flags flags)
 	i = 0;
 	count = 0;
 	(void)elem;
-	// if (flags.minus == 0)
-	// 	count += print_space(flags);
+	if (flags.minus == 0)
+		count += print_space(flags);
 	while (flags.str[i++])
 	{
 		if ((ft_strlenchr(SPECIFICATE, flags.str[i]) == -1) && \
@@ -44,9 +44,9 @@ int			ft_none(va_list elem, t_flags flags)
 			flags.str[i] != '-' && flags.str[i] != '+' && \
 			flags.str[i] != '#' && !ft_isdigit(flags.str[i]))
 		{
-			// count += write(1, &flags.str[i++], 1);
-			// if (flags.minus == 1)
-			// 	count += print_space(flags);
+			count += write(1, &flags.str[i++], 1);
+			if (flags.minus == 1)
+				count += print_space(flags);
 			while ((ft_strlenchr(SPECIFICATE, flags.str[i]) == -1) && \
 				flags.str[i])
 				count += write(1, &flags.str[i++], 1);
