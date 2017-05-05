@@ -49,8 +49,8 @@ int			main(void)
 	// printf("\nret = %d\n", printf("{%010R}"));
 	// printf("\nret ft = %d\n", ft_printf("{%010R}"));
 	printf("------------------------------------------\n");
-	printf("\nret = %d\n", printf("%5%"));
-	printf("\nret ft = %d\n", ft_printf("%5%"));
+	printf("\nret = %d\n", printf("{%05.S}", L"42 c est cool"));
+	printf("\nret ft = %d\n", ft_printf("{%05.S}", L"42 c est cool"));
 	printf("------------------------------------------\n");
 	
 	return (0);
