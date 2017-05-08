@@ -44,10 +44,9 @@ int			ft_c_low(va_list elem, t_flags flags)
 	int			width;
 	wchar_t		c;
 
-	c = (wchar_t)va_arg(elem, void *); 
+	c = (wchar_t)va_arg(elem, void *);
 	width = flags.get_width;
 	if (flags.l == 1)
 		return (choose_mask(c));
 	return (spec_c_modify(width, flags, c));
 }
-

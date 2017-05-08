@@ -122,8 +122,9 @@ char			*memaloc_str(const char *str, int *i)
 		str[*i] != 'U' && str[*i] != 'x' && str[*i] != 'X' && \
 		str[*i] != 'c' && str[*i] != 'C' && str[*i] != '%' && str[(*i) + 1])
 	{
-		if ((str[(*i) + 1] == '%') && (ft_strlenchr(SPECIFICATE, str[(*i) + 2]) != -1))
-			break;
+		if ((str[(*i) + 1] == '%') && \
+			(ft_strlenchr(SPECIFICATE, str[(*i) + 2]) != -1))
+			break ;
 		(*i)++;
 	}
 	if (!(s = ft_strchrdup(&str[l], str[(*i) + 1])))

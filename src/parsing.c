@@ -83,9 +83,8 @@ t_flags		parse_width(va_list elem, char *str, t_flags flags)
 	int		i;
 
 	i = 1;
-	while (str[i] != '.' && str[i] != 'l' && str[i] != 'h' && \
-		str[i] != 'j' && str[i] != 'z' && str[i] != '%' && \
-		str[i] && ft_strlenchr(SPECIFICATE, str[i]) == -1)
+	while (str[i] != 'l' && str[i] != 'h' && str[i] != 'j' && str[i] != 'z' \
+		&& str[i] != '.' && str[i] && ft_strlenchr(SPECIFICATE, str[i]) == -1)
 	{
 		if (str[i] == '*')
 		{
@@ -94,7 +93,7 @@ t_flags		parse_width(va_list elem, char *str, t_flags flags)
 			flags.get_width = va_arg(elem, int);
 			i++;
 		}
-		else if (ft_isdigit(str[i]) == 1)
+		else if (ft_isdigit(str[i]) && str[i - 1] != '.')
 		{
 			if (flags.width == 0 || flags.asterix_wdt == 1)
 				flags.get_width = 0;

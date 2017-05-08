@@ -89,8 +89,15 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*check_max(char *s);
 int				choose_mask(wchar_t value);
 int				(*func[16])(va_list elem, t_flags flags);
+int				(*f_uprec[4])(unsigned int value, unsigned int mask);
+
+int				take_mask_0(unsigned int value, unsigned int mask);
+int				take_mask_1(unsigned int value, unsigned int mask);
+int				take_mask_2(unsigned int value, unsigned int mask);
+int				take_mask_3(unsigned int value, unsigned int mask);
 
 int				ft_output_func(va_list elem, t_flags flags);
+int				choose_mask_f(unsigned int value, int prec);
 
 int				ft_s_low(va_list elem, t_flags flags);
 int				ft_s_high(va_list elem, t_flags flags);

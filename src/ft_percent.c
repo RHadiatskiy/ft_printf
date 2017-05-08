@@ -37,7 +37,7 @@ int			ft_none_double(va_list elem, t_flags flags)
 	return (count);
 }
 
-int		ft_percent(va_list elem, t_flags flags)
+int			ft_percent(va_list elem, t_flags flags)
 {
 	int		i;
 	int		ret;

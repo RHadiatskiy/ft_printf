@@ -21,10 +21,20 @@ char		*spec_p_modify(int width, int prec, t_flags flags)
 
 	is_max = prec > (int)(ft_strlen(flags.args)) ? \
 		prec : (int)(ft_strlen(flags.args));
-	s_zero = fillsmb('0', prec - ft_strlen(flags.args));
+	if (flags.precision == 0 && flags.width == 1)
+	{
+		s_zero = flags.zero == 0 ? fillsmb('0', 0) : \
+			fillsmb('0', width - is_max - 2);
+		s_space = flags.zero == 0 ? fillsmb(' ', width - is_max - 2) : \
+			fillsmb(' ', 0);
+	}
+	else
+	{
+		s_zero = fillsmb('0', prec - ft_strlen(flags.args));
+		s_space = fillsmb(' ', (width - is_max - 2));
+	}
 	res_d = ft_strjoin(s_zero, flags.args);
 	res_d = ft_strjoin("0x", res_d);
-	s_space = fillsmb(' ', (width - is_max - 2));
 	flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 		(res_d = ft_strjoin(s_space, res_d));
 	return (res_d);
