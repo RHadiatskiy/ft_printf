@@ -47,15 +47,20 @@ int			main(void)
 	// printf("\nret = %d\n", printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
 	// printf("\nret ft = %d\n", ft_printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
 	// printf("------------------------------------------\n");
-	// printf("\nret = %d\n", printf("{%030.5S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
-	// printf("\nret ft = %d\n", ft_printf("{%030.5S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
-	// printf("------------------------------------------\n");
 	// printf("\nret = %d\n", printf("{%f}{%F}", 1.42, 1.42));
 	// printf("\nret ft = %d\n", ft_printf("{%f}{%F}", 1.42, 1.42));
+	// printf("------------------------------------------\n");
+	// printf("\nret = %d\n", printf("@main_ftprintf: %####0000 33..1..#0.0d\n", 256));
+	// printf("\nret ft = %d\n", ft_printf("@main_ftprintf: %####0000 33..1..#0.0d\n", 256));
 	printf("------------------------------------------\n");
-	printf("\nret = %d\n", printf("@main_ftprintf: %####0000 33..1..#00d\n", 256));
-	printf("\nret ft = %d\n", ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256));
+	printf("\nret = %d\n", printf("%*.*d", 0, 3, 0));
 	printf("------------------------------------------\n");
-	
+	printf("\nret ft = %d\n", ft_printf("%*.*d", 0, 3, 0));
+	printf("------------------------------------------\n");
+	printf("\nret = %d\n", printf("{%.*d}", 5, 42));
+	printf("------------------------------------------\n");
+	printf("\nret ft = %d\n", ft_printf("{%.*d}", 5, 42));
+	printf("------------------------------------------\n");
+
 	return (0);
 }

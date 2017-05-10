@@ -13,7 +13,8 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define SPECIFICATE 	"sSpdDioOuUxXcC%"
+# define SPECIFICATE 	"sSpdDioOuUxXcCfF%"
+# define FLAGS			"+-#hljz"
 
 # include <stdarg.h>
 # include <stdio.h>
@@ -70,11 +71,11 @@ char			*ft_strdup(const char *str);
 char			*ft_strchrdup(const char *str, char chr);
 char			*memaloc_str(const char *str, int *i);
 int				ft_strlenchr(const char *s, int c);
-t_flags			ft_parse(va_list elem, t_flags flags);
-t_flags			parse_flags(va_list elem, char *str, t_flags flags);
-t_flags			parse_precision(va_list elem, char *str, t_flags flags);
-t_flags			parse_width(va_list elem, char *str, t_flags flags);
-t_flags			parse_length(va_list elem, char *str, t_flags flags);
+void			ft_parse(va_list elem, t_flags *flags);
+void			parse_flags(va_list elem, char *str, t_flags *flags);
+void			parse_precision(va_list elem, int *i, t_flags *flags);
+void			parse_width(va_list elem, int *i, t_flags *flags);
+void			parse_length(va_list elem, char *str, t_flags *flags);
 int				ft_isdigit(int n);
 int				ft_printing(char *s);
 char			*fillsmb(char c, int n);
@@ -88,7 +89,7 @@ intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*check_max(char *s);
 int				choose_mask(wchar_t value);
-int				(*func[16])(va_list elem, t_flags flags);
+int				(*func[18])(va_list elem, t_flags flags);
 int				(*f_uprec[4])(unsigned int value, unsigned int mask);
 
 int				take_mask_0(unsigned int value, unsigned int mask);
@@ -114,6 +115,8 @@ int				ft_x_high(va_list elem, t_flags flags);
 int				ft_c_low(va_list elem, t_flags flags);
 int				ft_c_high(va_list elem, t_flags flags);
 int				ft_percent(va_list elem, t_flags flags);
+int				ft_fl_low(va_list elem, t_flags flags);
+int				ft_fl_high(va_list elem, t_flags flags);
 int				ft_none(va_list elem, t_flags flags);
 
 #endif

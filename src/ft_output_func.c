@@ -18,7 +18,7 @@ int		ft_output_func(va_list elem, t_flags flags)
 
 	n = ft_strlenchr(SPECIFICATE, flags.str[ft_strlen(flags.str) - 1]);
 	if (n == -1)
-		n = 15;
+		n = 17;
 	func[0] = ft_s_low;
 	func[1] = ft_s_high;
 	func[2] = ft_p;
@@ -33,7 +33,9 @@ int		ft_output_func(va_list elem, t_flags flags)
 	func[11] = ft_x_high;
 	func[12] = ft_c_low;
 	func[13] = ft_c_high;
-	func[14] = ft_percent;
-	func[15] = ft_none;
+	func[14] = ft_fl_low;
+	func[15] = ft_fl_high;
+	func[16] = ft_percent;
+	func[17] = ft_none;
 	return ((*func[n])(elem, flags));
 }

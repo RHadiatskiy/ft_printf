@@ -44,7 +44,7 @@ int				ft_print(va_list elem, const char *format)
 		{
 			flags = flags_reset(flags);
 			flags.str = memaloc_str(format, &i);
-			flags = ft_parse(elem, flags);
+			ft_parse(elem, &flags);
 			ret += ft_output_func(elem, flags);
 			// print_flags(flags);
 			// write(1, "------------------------------\n", 31);
