@@ -38,11 +38,10 @@ int			ft_none(va_list elem, t_flags flags)
 	while (flags.str[i++])
 	{
 		if ((ft_strlenchr(SPECIFICATE, flags.str[i]) == -1) && \
-			flags.str[i] != 'l' && flags.str[i] != 'h' && \
-			flags.str[i] != 'j' && flags.str[i] != 'z' && \
-			flags.str[i] != ' ' && flags.str[i] != '.' && \
-			flags.str[i] != '-' && flags.str[i] != '+' && \
-			flags.str[i] != '#' && !ft_isdigit(flags.str[i]))
+			flags.str[i] != 'l' && flags.str[i] != 'h' && flags.str[i] != 'j' \
+			&& flags.str[i] != 'z' && flags.str[i] != ' ' && \
+			flags.str[i] != '.' && flags.str[i] != '-' && flags.str[i] != '+' \
+			&& flags.str[i] != '#' && !ft_isdigit(flags.str[i]))
 		{
 			count += write(1, &flags.str[i++], 1);
 			if (flags.minus == 1)
