@@ -15,7 +15,7 @@
 void		ft_parse(va_list elem, t_flags *flags)
 {
 	int		i;
-
+	
 	i = 1;
 	parse_flags(elem, flags->str, flags);
 	parse_length(elem, flags->str, flags);

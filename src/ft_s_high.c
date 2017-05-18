@@ -65,19 +65,11 @@ int			print_u_prec(wchar_t *s, int prec)
 	{
 		if (ucodelen(s[i]) <= sum)
 		{
-			// printf("\nSUM1 : %d\n", sum);
 			n += choose_mask(s[i]);
 			sum -= ucodelen(s[i]);
-			// printf("\nLEN[%d] : %d\n", i, ucodelen(s[i]));
-			// printf("\nSUM2[%d] : %d\n", i, sum);
-			// printf("N : %d\n", n);
-			// printf("------------------------------------------\n");
 		}
 		else if (sum > 0)
-		{
-			// printf("\nSUM : %d\n", sum);
 			n += choose_mask_f(s[i], sum);
-		}
 		i++;
 	}
 	return (n);

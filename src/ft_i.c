@@ -12,8 +12,6 @@
 
 #include "../include/ft_printf.h"
 
-char		*check_max(char *s);
-
 int			ft_i(va_list elem, t_flags flags)
 {
 	int				width;

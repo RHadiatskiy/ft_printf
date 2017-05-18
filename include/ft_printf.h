@@ -52,7 +52,7 @@ typedef struct	s_flags
 
 int				ft_printf(const char *format, ...);
 
-int				ft_print(va_list elem, const char *format);
+void			ft_print(va_list elem, const char *format, int *ret);
 char			*ft_strjoin_f(char *s1, char *s2);
 t_flags			flags_reset(t_flags flags);
 void			print_flags(t_flags flags);
@@ -68,7 +68,7 @@ char			*ft_itoa_base(intmax_t value, int base);
 int				ft_nbrlen(long int nbr);
 int				ft_putstrf(char *str);
 char			*ft_strdup(const char *str);
-char			*ft_strchrdup(const char *str, char chr);
+char			*ft_strchrdup(const char *str, int chr);
 char			*memaloc_str(const char *str, int *i);
 int				ft_strlenchr(const char *s, int c);
 void			ft_parse(va_list elem, t_flags *flags);
@@ -99,6 +99,7 @@ int				take_mask_3(unsigned int value, unsigned int mask);
 
 int				ft_output_func(va_list elem, t_flags flags);
 int				choose_mask_f(unsigned int value, int prec);
+char			*check_max(char *s);
 
 int				ft_s_low(va_list elem, t_flags flags);
 int				ft_s_high(va_list elem, t_flags flags);
