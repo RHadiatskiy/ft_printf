@@ -32,24 +32,11 @@ int			choose_mask_f(unsigned int value, int prec)
 	mask[1] = 49280;
 	mask[2] = 14712960;
 	mask[3] = 4034953344;
-	// printf("YES!");
 	f_uprec[0] = take_mask_0;
 	f_uprec[1] = take_mask_1;
 	f_uprec[2] = take_mask_2;
 	f_uprec[3] = take_mask_3;
 	return ((*f_uprec[prec - 1])(value, mask[prec - 1]));
-}
-
-int			ft_strlen_u(wchar_t *s)
-{
-	int		len;
-	int		i;
-
-	i = 0;
-	len = 0;
-	while (s[i])
-		len += ucodelen(s[i++]);
-	return (len);
 }
 
 int			print_u_prec(wchar_t *s, int prec)
@@ -65,14 +52,28 @@ int			print_u_prec(wchar_t *s, int prec)
 	{
 		if (ucodelen(s[i]) <= sum)
 		{
-			n += choose_mask(s[i]);
 			sum -= ucodelen(s[i]);
+			n += choose_mask(s[i]);
 		}
 		else if (sum > 0)
-			n += choose_mask_f(s[i], sum);
+			break ;
 		i++;
 	}
 	return (n);
+}
+
+char		*fill_space(wchar_t *s, t_flags flags)
+{
+	char		*space;
+	int			wise;
+
+	wise = flags.get_width - (flags.precision == 1 ? \
+		len_u_prec(s, flags.get_precision) : ft_strlen_u(s));
+	if (flags.zero == 1)
+		space = fillsmb('0', wise);
+	else
+		space = fillsmb(' ', wise);
+	return (space);
 }
 
 int			ft_s_high(va_list elem, t_flags flags)
@@ -80,26 +81,26 @@ int			ft_s_high(va_list elem, t_flags flags)
 	wchar_t		*s;
 	int			i;
 	int			n;
-	int			wise;
+	char		*space;
 
 	n = 0;
 	i = 0;
-	(void)flags;
 	s = (wchar_t *)va_arg(elem, wchar_t *);
 	if (s == NULL)
 	{
 		flags.args = ft_strdup("(null)");
-		return (ft_printing(flags.args));
+		return (ft_printing(spec_s_modify(flags.get_width, flags.get_precision, flags)));
 	}
-	wise = flags.get_width - (flags.precision == 1 ? \
-		flags.get_precision : ft_strlen_u(s));
-	if (flags.zero == 1)
-		while (wise-- > 0)
-			n += write(1, "0", 1);
+	else
+		space = fill_space(s, flags);
+	if (flags.minus == 0)
+		n += ft_printing(space);
 	if (flags.precision == 1)
 		n += print_u_prec(s, flags.get_precision);
 	else
 		while (s[i])
 			n += choose_mask(s[i++]);
+	if (flags.minus == 1)
+		n += ft_printing(space);
 	return (n);
 }
