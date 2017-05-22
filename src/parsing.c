@@ -117,7 +117,7 @@ void		parse_length(va_list elem, char *str, t_flags *flags)
 	while (str[i])
 	{
 		if (str[i] == 'h' || str[i] == 'l' || \
-			str[i] == 'j' || str[i] == 'z')
+			str[i] == 'j' || str[i] == 'z' || str[i] == 'L')
 		{
 			if (str[i] == 'h' && str[i + 1] == 'h')
 				flags->hh = 1;
@@ -125,7 +125,7 @@ void		parse_length(va_list elem, char *str, t_flags *flags)
 				flags->h = 1;
 			else if (str[i] == 'l' && str[i + 1] != 'l' && str[i - 1] != 'l')
 				flags->l = 1;
-			else if (str[i] == 'l' && str[i + 1] == 'l')
+			else if ((str[i] == 'l' && str[i + 1] == 'l') || str[i] == 'L')
 				flags->ll = 1;
 			else if (str[i] == 'j')
 				flags->j = 1;

@@ -43,38 +43,14 @@ void			ft_print(va_list elem, const char *format, int *ret)
 			flags.str = memaloc_str(format, &i);
 			ft_parse(elem, &flags);
 			(*ret) += ft_output_func(elem, flags);
-			// print_flags(flags);
-			// write(1, "------------------------------\n", 31);
+			free(flags.str);
+			free(flags.args);
 		}
 		else if (format[i] != '%')
 			(*ret) += (write(1, &format[i++], 1));
 		else
 			i++;
 	}
-}
-
-char			*ft_strjoin_f(char *s1, char *s2)
-{
-	char	*s_join;
-	int		i;
-	int		j;
-
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	if (!s1 || !s2 || \
-		!(s_join = (char *)malloc(sizeof(char) * i + j + 3)))
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-		s_join[j++] = s1[i++];
-	s_join[j++] = ' ';
-	i = 0;
-	while (s2[i])
-		s_join[j++] = s2[i++];
-	s_join[j++] = ' ';
-	s_join[j] = '\0';
-	return (s_join);
 }
 
 char			*ft_strchrdup(const char *str, int chr)

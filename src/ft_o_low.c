@@ -37,6 +37,7 @@ char		*spec_o_modify(int width, int prec, t_flags flags)
 	if (flags.zero == 0 || flags.minus == 1)
 		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 		(res_d = ft_strjoin(s_space, res_d));
+	free(s_space);
 	return (res_d);
 }
 

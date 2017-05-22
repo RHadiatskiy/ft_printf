@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # define SPECIFICATE 	"sSpdDioOuUxXcCfF%"
-# define FLAGS			"+-#hljz"
+# define FLAGS			"+-#hlLjz"
 
 # include <stdarg.h>
 # include <stdio.h>
@@ -48,25 +48,19 @@ typedef struct	s_flags
 	char				*str;
 	char				*args;
 	int					n;
+	int					m;
 }				t_flags;
 
 int				ft_printf(const char *format, ...);
 
 void			ft_print(va_list elem, const char *format, int *ret);
-char			*ft_strjoin_f(char *s1, char *s2);
 t_flags			flags_reset(t_flags flags);
-void			print_flags(t_flags flags);
 void			ft_putchar(char c);
 size_t			ft_strlen(const char *str);
-void			ft_putnbr(int nb);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_to_lowcase(const char *str);
-int				sqr(int nb, int sq);
 int				ft_atoi(const char *str);
-char			*ft_itoa(long int nbr);
 char			*ft_itoa_base(intmax_t value, int base);
-int				ft_nbrlen(long int nbr);
-int				ft_putstrf(char *str);
 char			*ft_strdup(const char *str);
 char			*ft_strchrdup(const char *str, int chr);
 char			*memaloc_str(const char *str, int *i);
@@ -93,8 +87,8 @@ intmax_t		check_lenght_unsigned(t_flags flags, uintmax_t d);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*check_max(char *s);
 int				choose_mask(wchar_t value);
-int				(*func[18])(va_list elem, t_flags flags);
-int				(*f_uprec[4])(unsigned int value, unsigned int mask);
+int				(*g_func[18])(va_list elem, t_flags flags);
+int				(*g_uprec[4])(unsigned int value, unsigned int mask);
 
 int				take_mask_0(unsigned int value, unsigned int mask);
 int				take_mask_1(unsigned int value, unsigned int mask);

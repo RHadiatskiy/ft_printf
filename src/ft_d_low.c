@@ -73,9 +73,8 @@ char				*spec_d_modify(int width, int prec, t_flags flags, int m)
 	char		*res_d;
 	char		*s_zero;
 	char		*s_space;
-	int			is_max;
 
-	is_max = prec > (int)(ft_strlen(flags.args)) ? \
+	flags.m = prec > (int)(ft_strlen(flags.args)) ? \
 		prec : (int)(ft_strlen(flags.args));
 	if (flags.zero == 1 && flags.precision == 0 && flags.minus == 0)
 		s_zero = (flags.plus == 1 || m == 1 || flags.space == 1) ? \
@@ -84,7 +83,7 @@ char				*spec_d_modify(int width, int prec, t_flags flags, int m)
 	else
 		s_zero = fillsmb('0', prec - ft_strlen(flags.args));
 	s_space = (m == 0 && flags.space == 0 && flags.plus == 0) ? \
-		(fillsmb(' ', width - is_max)) : (fillsmb(' ', (width - is_max - 1)));
+		(fillsmb(' ', width - flags.m)) : (fillsmb(' ', (width - flags.m - 1)));
 	res_d = ft_strjoin(s_zero, flags.args);
 	if (flags.plus == 1 && m != 1)
 		res_d = ft_strjoin("+", res_d);

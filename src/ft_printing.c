@@ -14,10 +14,6 @@
 
 int		ft_printing(char *s)
 {
-	int		i;
-
-	i = 0;
-	while (s[i])
-		write(1, &s[i++], 1);
-	return (i);
+	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

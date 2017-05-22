@@ -6,7 +6,7 @@
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 15:37:39 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/04/06 15:37:42 by rhadiats         ###   ########.fr       */
+/*   Updated: 2017/05/21 13:40:26 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int			main(void)
 	setlocale(LC_ALL, "en_US.UTF-8");
 //  ft_printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
 //  printf("ololo%s%%ss% 4%%%%5.2sololo\n", "...", "42");
-//	ft_printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
-//	printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
+ft_printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
+printf("ololo%   %\n%10.5s\n%d\n", "kokoko", 42);
 //	printf("------------------------------\n");
-	// printf("\nret = %d\n", printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
-	// printf("\nret ft = %d\n", ft_printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
+	 printf("\nret = %d\n", printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
+	 printf("\nret ft = %d\n", ft_printf("%hhu / %hhu", SHRT_MAX - 42, SHRT_MAX - 4200));
 	// printf("\nret = %d\n", printf("%hhO, %hhO", 0, USHRT_MAX));
 	// printf("\nret ft = %d\n", ft_printf("%hhO, %hhO", 0, USHRT_MAX));
 	// printf("\nret = %d\n", printf("{%-15Z}", 123));
@@ -38,10 +38,9 @@ int			main(void)
 	// printf("\nret = %d\n", printf("{%*d}", -5, 42));
 	// printf("\nret ft = %d\n", ft_printf("{%*d}", -5, 42));
 	// printf("------------------------------------------\n");
-	printf("------------------------------------------\n");
-	printf("\nret = %d\n", printf("{%60S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
-	printf("\nret ft = %d\n", ft_printf("{%60S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
-	printf("------------------------------------------\n");
+	// printf("\nret = %d\n", printf("{%60S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	// printf("\nret ft = %d\n", ft_printf("{%60S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B"));
+	// printf("------------------------------------------\n");
 	// printf("\nret = %d\n", printf("{%f}{%F}", 1.42, 1.42));
 	// printf("\nret ft = %d\n", ft_printf("{%f}{%F}", 1.42, 1.42));
 	// printf("------------------------------------------\n");

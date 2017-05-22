@@ -32,11 +32,11 @@ int			choose_mask_f(unsigned int value, int prec)
 	mask[1] = 49280;
 	mask[2] = 14712960;
 	mask[3] = 4034953344;
-	f_uprec[0] = take_mask_0;
-	f_uprec[1] = take_mask_1;
-	f_uprec[2] = take_mask_2;
-	f_uprec[3] = take_mask_3;
-	return ((*f_uprec[prec - 1])(value, mask[prec - 1]));
+	g_uprec[0] = take_mask_0;
+	g_uprec[1] = take_mask_1;
+	g_uprec[2] = take_mask_2;
+	g_uprec[3] = take_mask_3;
+	return ((*g_uprec[prec - 1])(value, mask[prec - 1]));
 }
 
 int			print_u_prec(wchar_t *s, int prec)
@@ -89,10 +89,10 @@ int			ft_s_high(va_list elem, t_flags flags)
 	if (s == NULL)
 	{
 		flags.args = ft_strdup("(null)");
-		return (ft_printing(spec_s_modify(flags.get_width, flags.get_precision, flags)));
+		return (ft_printing(spec_s_modify(flags.get_width, \
+			flags.get_precision, flags)));
 	}
-	else
-		space = fill_space(s, flags);
+	space = fill_space(s, flags);
 	if (flags.minus == 0)
 		n += ft_printing(space);
 	if (flags.precision == 1)

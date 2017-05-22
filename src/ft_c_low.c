@@ -27,15 +27,14 @@ int			spec_c_modify(int width, t_flags flags, char c)
 	if (flags.minus == 1)
 	{
 		n += write(1, &c, 1);
-		while (s_space[i])
-			n += write(1, &s_space[i++], 1);
+		n += write(1, s_space, ft_strlen(s_space));
 	}
 	else
 	{
-		while (s_space[i])
-			n += write(1, &s_space[i++], 1);
+		n += write(1, s_space, ft_strlen(s_space));
 		n += write(1, &c, 1);
 	}
+	free(s_space);
 	return (n);
 }
 

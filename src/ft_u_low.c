@@ -50,6 +50,8 @@ char		*spec_u_modify(int width, int prec, t_flags flags, int minus)
 	if (flags.zero == 0 || flags.minus == 1 || flags.precision == 1)
 		flags.minus == 1 ? (res_d = ft_strjoin(res_d, s_space)) : \
 		(res_d = ft_strjoin(s_space, res_d));
+	free(s_zero);
+	free(s_space);
 	return (res_d);
 }
 

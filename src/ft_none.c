@@ -15,14 +15,12 @@
 int			print_space(t_flags flags)
 {
 	char	*space;
-	int		i;
 
-	i = 0;
 	space = (flags.zero == 1 && flags.minus == 0) ? \
 	fillsmb('0', flags.get_width - 1) : fillsmb(' ', flags.get_width - 1);
-	while (space[i])
-		write(1, &space[i++], 1);
-	return (i);
+	write(1, space, ft_strlen(space));
+	free(space);
+	return (ft_strlen(space));
 }
 
 int			ft_none(va_list elem, t_flags flags)
